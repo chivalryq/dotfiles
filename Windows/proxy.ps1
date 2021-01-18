@@ -91,3 +91,5 @@ Function Disable-InternetProxy
 # Disable-InternetProxy
 #CFW的默认配置
 Set-InternetProxy -proxy "127.0.0.1:7890"
+
+#暂时不可用
