@@ -1,2 +1,12 @@
 nnoremap H ^ 
 nnoremap L $
+
+set ideajoin
+set surround
+set hlsearch
+set clipboard=unnamed
+set smartcaseset
+set ideajoin
+set history=100000
+
+clipboard+=ideaput
