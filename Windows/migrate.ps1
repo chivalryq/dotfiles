@@ -6,6 +6,7 @@ $dotfileDir=$Home+"\repo\dotfiles"
 #添加硬连接
 #ideavim设置
 sudo ln  $dotfileDir"\.ideavimrc" $Home"\.ideavimrc"
+sudo ln  $dotfileDir"\.vimrc" $Home"\.vimrc"
 
 #WindowsTerminal 设置
 Remove-Item $Home"\AppData\Local\Microsoft\Windows Terminal\settings.json"
