@@ -4,9 +4,12 @@
 $dotfileDir=$Home+"\repo\dotfiles"
 
 #添加硬连接
-#ideavim设置
-sudo ln  $dotfileDir"\.ideavimrc" $Home"\.ideavimrc"
-sudo ln  $dotfileDir"\.vimrc" $Home"\.vimrc"
+#ideavim & vim
+./_copy_dotfiles.ps1
+
+#install vim-plug
+iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
+    ni "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim" -Force
 
 #WindowsTerminal 设置
 Remove-Item $Home"\AppData\Local\Microsoft\Windows Terminal\settings.json"
