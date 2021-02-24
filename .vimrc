@@ -44,3 +44,8 @@ nmap <silent> <F9> <Plug>StopMarkdownPreview    " 普通模式
 imap <silent> <F9> <Plug>StopMarkdownPreview    " 插入模式
 set pythonthreedll=$HOME\AppData\Local\Programs\Python\Python36-32\python36.dll
 set pythonthreehome=$HOME\AppData\Local\Programs\Python\Python36-32\
+
+nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j
