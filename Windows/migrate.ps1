@@ -1,11 +1,11 @@
 #todo 把这里改成读取用户名
-./scoop_install.ps1
+.\scoop_install.ps1
 
 $dotfileDir=$Home+"\repo\dotfiles"
 
 #添加硬连接
 #ideavim & vim
-./_copy_dotfiles.ps1
+.\_copy_dotfiles.ps1
 
 #install vim-plug
 iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
