@@ -15,6 +15,7 @@ Plug 'junegunn/seoul256.vim'
 Plug 'godlygeek/tabular'
 Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.vim'
+Plug 'flazz/vim-colorschemes'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
