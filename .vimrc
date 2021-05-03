@@ -27,6 +27,8 @@ set encoding=utf-8
 set fileencodings=utf-8,chinese,latin-1,gbk,gb18030,gk2312
 if has("win32")
  set fileencoding=chinese
+ "解决consle提示信息输出乱码
+ language messages zh_CN.utf-8
 else
  set fileencoding=utf-8
 endif
@@ -35,8 +37,6 @@ endif
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
-"解决consle提示信息输出乱码
-language messages zh_CN.utf-8
 
 " markdown-preview
 nmap <silent> <F8> <Plug>MarkdownPreview        " 普通模式
@@ -51,4 +51,6 @@ nnoremap gk k
 nnoremap j gj
 nnoremap gj j
 
-colorscheme gruvbox
+if has("win32")
+ colorscheme gruvbox
+endif
