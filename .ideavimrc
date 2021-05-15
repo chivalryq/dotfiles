@@ -8,6 +8,7 @@ set clipboard=unnamed
 set smartcaseset
 set ideajoin
 set history=100000
+let g:EasyMotion_override_acejump = 0
 let mapleader="s"
 set easymotion
 

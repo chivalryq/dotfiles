@@ -5,8 +5,8 @@ REPODIR=~/repo
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ln -s .vimrc ~/.vimrc
-ln -s .ideavimrc ~/.ideavimrc
 ln -s .zshrc ~/.zshrc
+cp .ideavimrc ~
 
 #proxy
 export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
