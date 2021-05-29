@@ -17,6 +17,8 @@ export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_pr
 brew install fortune
 brew install cowsay
 brew install zsh-syntax-highlighting
+brew install jesseduffield/lazygit/lazygit
+
 
 #install omz and plugin
 rm -rf $HOME/.oh-my-zsh
