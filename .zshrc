@@ -99,12 +99,18 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+#k8s
 source <(kubectl completion zsh)
 alias k=kubectl
 complete -F __start_kubectl k
 
 alias lg='lazygit' 
+# proxy and noproxy
 if [ "$(uname)"=="Darwin" ]; then
     export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 fi
+alias nop=export https_proxy= http_proxy= all_proxy=
+alias setproxy=export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+
 fortune | cowsay
