@@ -115,3 +115,6 @@ alias nop='echo "canceling proxy" && export https_proxy= http_proxy= all_proxy='
 alias setproxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
 
 fortune | cowsay
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
