@@ -104,6 +104,7 @@ source $ZSH/oh-my-zsh.sh
 source <(kubectl completion zsh)
 alias k=kubectl
 complete -F __start_kubectl k
+alias kg="k get"
 
 alias lg='lazygit' 
 # proxy and noproxy
