@@ -54,3 +54,9 @@ nnoremap gj j
 if has("win32")
  colorscheme gruvbox
 endif
+
+nmap - ddp
+nmap _ ddkp
+imap <c-d> <esc>ddi
+imap <c-u> <esc>viw~i
+nmap <c-u> viw~
