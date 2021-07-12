@@ -3,8 +3,6 @@ set nu
 set tabstop=4
 set clipboard=unnamed
 
-nnoremap H ^ 
-nnoremap L $
 
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
@@ -46,17 +44,27 @@ imap <silent> <F9> <Plug>StopMarkdownPreview    " 插入模式
 set pythonthreedll=$HOME\AppData\Local\Programs\Python\Python36-32\python36.dll
 set pythonthreehome=$HOME\AppData\Local\Programs\Python\Python36-32\
 
-nnoremap k gk
-nnoremap gk k
-nnoremap j gj
-nnoremap gj j
 
 if has("win32")
  colorscheme gruvbox
 endif
 
-nmap - ddp
-nmap _ ddkp
-imap <c-d> <esc>ddi
-imap <c-u> <esc>viw~i
-nmap <c-u> viw~
+"key map
+nnoremap H ^ 
+nnoremap L $
+
+nnoremap dL d$
+nnoremap dH d^
+nnoremap cL c$
+nnoremap cH c^
+
+nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j
+
+nnoremap - ddp
+nnoremap _ ddkp
+inoremap <c-d> <esc>ddi
+inoremap <c-u> <esc>viw~i
+nnoremap <c-u> viw~
