@@ -1,3 +1,4 @@
+let mapleader="\<space>"
 set guifont=Courier_New:h12:cANSI
 set nu
 set tabstop=4
@@ -53,10 +54,13 @@ endif
 nnoremap H ^ 
 nnoremap L $
 
+" H和L的无敌快捷键
 nnoremap dL d$
 nnoremap dH d^
 nnoremap cL c$
 nnoremap cH c^
+nnoremap yL y$
+nnoremap yH y^
 
 nnoremap k gk
 nnoremap gk k
@@ -68,3 +72,5 @@ nnoremap _ ddkp
 inoremap <c-d> <esc>ddi
 inoremap <c-u> <esc>viw~i
 nnoremap <c-u> viw~
+"(after copy a word) replace a word
+nnoremap <leader>p viwp
