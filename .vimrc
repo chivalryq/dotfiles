@@ -1,10 +1,13 @@
+"Basic Setting {{{
 let mapleader="\<space>"
 set guifont=Courier_New:h12:cANSI
 set nu
 set tabstop=4
 set clipboard=unnamed
 
+"}}}
 
+" Plugin --------------{{{
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
@@ -19,7 +22,9 @@ Plug 'flazz/vim-colorschemes'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
+"}}}
 
+"Windows Gvim Setting ------------{{{
 "Gvim中文菜单乱码解决方案
 " 设置文件编码格式
 set encoding=utf-8
@@ -49,8 +54,9 @@ set pythonthreehome=$HOME\AppData\Local\Programs\Python\Python36-32\
 if has("win32")
  colorscheme gruvbox
 endif
+"}}}
 
-"key map
+" Mapping ------------------{{{
 nnoremap H ^ 
 nnoremap L $
 
@@ -74,3 +80,35 @@ inoremap <c-u> <esc>viw~i
 nnoremap <c-u> viw~
 "(after copy a word) replace a word
 nnoremap <leader>p viwp
+" edit VIMRC faster
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" fast warp quote on word
+nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
+vnoremap <leader>" i"<esc>gva"<esc>
+" quick exit insert mode and visual mode
+inoremap jk <esc>
+vnoremap jk <esc>
+inoremap <esc> <nop>
+"}}}
+
+" Status Bar ----------------{{{
+set statusline=%f         " 文件的路径
+set statusline+=%=        " 右对齐
+set statusline+=%l        " 当前行
+set statusline+=/         " 分隔符
+set statusline+=%L        " 总行数
+"}}}
+
+
+" Vimscript file settings ---------------------- {{{
+augroup filetype_vim
+    autocmd!
+	autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+" }}}
+
+
