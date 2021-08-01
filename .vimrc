@@ -75,7 +75,10 @@ nnoremap gj j
 
 nnoremap - ddp
 nnoremap _ ddkp
+
+"delete one line in insert mode
 inoremap <c-d> <esc>ddi
+inoremap <esc>ddi <nop>
 inoremap <c-u> <esc>viw~i
 nnoremap <c-u> viw~
 "(after copy a word) replace a word
