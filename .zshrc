@@ -106,6 +106,7 @@ alias k=kubectl
 complete -F __start_kubectl k
 alias kg="k get"
 alias kd="k describe"
+alias kde="k delete"
 
 alias lg='lazygit' 
 # proxy and noproxy
@@ -120,5 +121,10 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 alias t='terraform'
 
+#ranger
+alias ra='ranger'
+
+#quick source .zshrc
+alias sz="source ~/.zshrc"
 fortune | cowsay
 

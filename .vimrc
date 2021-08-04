@@ -4,6 +4,8 @@ set guifont=Courier_New:h12:cANSI
 set nu
 set tabstop=4
 set clipboard=unnamed
+set incsearch
+set hlsearch
 
 "}}}
 
@@ -91,10 +93,11 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 vnoremap <leader>" i"<esc>gva"<esc>
-" quick exit insert mode and visual mode
+" quick exit insert mode mode
 inoremap jk <esc>
-vnoremap jk <esc>
 inoremap <esc> <nop>
+
+nnoremap <leader>l :<c-u>nohlsearch<cr><c-l>
 "}}}
 
 " Status Bar ----------------{{{
