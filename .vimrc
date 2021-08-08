@@ -109,11 +109,11 @@ vnoremap <leader>" i"<esc>gva"<esc>
 inoremap jk <esc>
 inoremap <esc> <nop>
 
-nnoremap <leader>l :<c-u>nohlsearch<cr><c-l>
+nnoremap <leader>n :<c-u>nohlsearch<cr><c-l>
 
 " set comma and dot as new change start
-inoremap . .<c-g>u
-inoremap , ,<c-g>u
+"inoremap . .<c-g>u
+"inoremap , ,<c-g>u
 
 " Moving text
 vnoremap <c-j> :m '>+1<CR>gv=gv
