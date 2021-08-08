@@ -130,7 +130,7 @@ alias sz="source ~/.zshrc"
 #CLI tools
 alias cat='bat'
 
-
+setproxy
 
 
 fortune | cowsay
