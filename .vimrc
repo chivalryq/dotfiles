@@ -95,9 +95,6 @@ nnoremap <leader>l :wincmd l<CR>
 " greatest remap ever, 选中并粘贴yank寄存器
 vnoremap <leader>p "_dP
 
-"delete one line in insert mode
-inoremap <c-d> <esc>ddi
-inoremap <esc>ddi <nop>
 "(after copy a word) replace a word
 nnoremap <leader>p viwp
 " edit VIMRC faster
@@ -113,7 +110,20 @@ inoremap jk <esc>
 inoremap <esc> <nop>
 
 nnoremap <leader>l :<c-u>nohlsearch<cr><c-l>
-"}}}
+
+" set comma and dot as new change start
+inoremap . .<c-g>u
+inoremap , ,<c-g>u
+
+" Moving text
+vnoremap <c-j> :m '>+1<CR>gv=gv
+vnoremap <c-k> :m '<-2<CR>gv=gv
+inoremap <c-j> <esc>:m .+1<CR>==i
+inoremap <c-k> <esc>:m .-2<CR>==i
+nnoremap <c-j> :m .+1<CR>==
+nnoremap <c-k> :m .-2<CR>==
+" }}}
+
 
 " Status Bar ----------------{{{
 set statusline=%f         " 文件的路径
