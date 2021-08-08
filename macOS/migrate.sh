@@ -1,4 +1,5 @@
 #!bin/bash
+# excuting script repeatedly should be safe
 DOTFILEDIR=~/repo/dotfiles
 REPODIR=~/repo
 
@@ -16,6 +17,8 @@ export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_pr
 #brew
 brew install fortune
 brew install cowsay
+brew install bat
+brew install fzf
 brew install zsh-syntax-highlighting
 brew install jesseduffield/lazygit/lazygit
 

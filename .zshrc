@@ -126,5 +126,12 @@ alias ra='ranger'
 
 #quick source .zshrc
 alias sz="source ~/.zshrc"
+
+#CLI tools
+alias cat='bat'
+
+
+
+
 fortune | cowsay
 

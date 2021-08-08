@@ -1,11 +1,19 @@
 "Basic Setting {{{
 let mapleader="\<space>"
 set guifont=Courier_New:h12:cANSI
-set nu
+set number
+set relativenumber
 set tabstop=4
 set clipboard=unnamed
 set incsearch
 set hlsearch
+set expandtab
+set noerrorbells
+set hidden
+set scrolloff=8
+
+set signcolumn=yes
+
 
 "}}}
 
@@ -17,6 +25,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'junegunn/seoul256.vim'
 Plug 'godlygeek/tabular'
+
 Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'flazz/vim-colorschemes'
@@ -53,10 +62,9 @@ set pythonthreedll=$HOME\AppData\Local\Programs\Python\Python36-32\python36.dll
 set pythonthreehome=$HOME\AppData\Local\Programs\Python\Python36-32\
 
 
-if has("win32")
- colorscheme gruvbox
-endif
 "}}}
+
+
 
 " Mapping ------------------{{{
 nnoremap H ^ 
@@ -76,18 +84,25 @@ nnoremap j gj
 nnoremap gj j
 
 nnoremap - ddp
-nnoremap _ ddkp
+nnoremap _ ddkP
+
+" for smooth windows swtich
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>l :wincmd l<CR>
+
+" greatest remap ever, 选中并粘贴yank寄存器
+vnoremap <leader>p "_dP
 
 "delete one line in insert mode
 inoremap <c-d> <esc>ddi
 inoremap <esc>ddi <nop>
-inoremap <c-u> <esc>viw~i
-nnoremap <c-u> viw~
 "(after copy a word) replace a word
 nnoremap <leader>p viwp
 " edit VIMRC faster
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>sv :w<cr> :source $MYVIMRC<cr>
 
 " fast warp quote on word
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
@@ -117,4 +132,7 @@ augroup END
 
 " }}}
 
-
+" Color scheme --------------{{{
+colorscheme gruvbox
+set background=dark
+"}}}
