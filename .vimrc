@@ -13,6 +13,7 @@ set hidden
 set scrolloff=8
 
 set signcolumn=yes
+set encoding=UTF-8
 
 
 "}}}
@@ -29,6 +30,13 @@ Plug 'godlygeek/tabular'
 Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'flazz/vim-colorschemes'
+Plug 'preservim/nerdtree'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+"always the latest
+Plug 'ryanoasis/vim-devicons'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -122,16 +130,14 @@ inoremap <c-j> <esc>:m .+1<CR>==i
 inoremap <c-k> <esc>:m .-2<CR>==i
 nnoremap <c-j> :m .+1<CR>==
 nnoremap <c-k> :m .-2<CR>==
+
+nnoremap <leader>t :NERDTreeToggle<cr>
+
+" Git op / vim-fugitive mapping
+nmap <leader>gh :diffget //3<cr>
+nmap <leader>gu :diffget //2<cr>
+nmap <leader>gs :G<cr>
 " }}}
-
-
-" Status Bar ----------------{{{
-set statusline=%f         " 文件的路径
-set statusline+=%=        " 右对齐
-set statusline+=%l        " 当前行
-set statusline+=/         " 分隔符
-set statusline+=%L        " 总行数
-"}}}
 
 
 " Vimscript file settings ---------------------- {{{
@@ -145,4 +151,29 @@ augroup END
 " Color scheme --------------{{{
 colorscheme gruvbox
 set background=dark
+
 "}}}
+
+" NERDTree settings ---------{{{
+augroup NERDTree_cmd
+        autocmd!
+        " Start NERDTree. If a file is specified, move the cursor to its window.
+        autocmd StdinReadPre * let s:std_in=1
+        autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+        " Start NERDTree when Vim starts with a directory argument.
+        autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+            \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+
+        " Exit Vim if NERDTree is the only window remaining in the only tab.
+        autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+        " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+        autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+            \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+
+        " Open the existing NERDTree on each new tab.
+        autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+augroup END
+"}}}
+
+

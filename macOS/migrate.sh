@@ -21,7 +21,10 @@ brew install bat
 brew install fzf
 brew install zsh-syntax-highlighting
 brew install jesseduffield/lazygit/lazygit
-
+brew tap homebrew/cask-fonts
+brew install font-jetbrains-mono-nerd-font
+echo "Please set font to font-jetbrains-mono-nerd-font in Terminal"
+ 
 
 #install omz and plugin
 rm -rf $HOME/.oh-my-zsh
