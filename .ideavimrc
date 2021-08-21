@@ -1,4 +1,4 @@
-nnoremap H ^ 
+nnoremap H ^
 nnoremap L $
 
 set ideajoin

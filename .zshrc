@@ -70,7 +70,7 @@ ZSH_THEME="ys"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails oo many plugins slow dgit textmate ruby lighthouse)
 # Add wisely, as town shell startup.
-plugins=(git zsh-autosuggestions vi-mode zsh_reload zsh-syntax-highlighting autojump) 
+plugins=(git zsh-autosuggestions vi-mode zsh_reload zsh-syntax-highlighting autojump)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -108,7 +108,7 @@ alias kg="k get"
 alias kd="k describe"
 alias kde="k delete"
 
-alias lg='lazygit' 
+alias lg='lazygit'
 # proxy and noproxy
 if [ "$(uname)"=="Darwin" ]; then
     #export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
@@ -130,7 +130,7 @@ alias sz="source ~/.zshrc"
 #CLI tools
 alias cat='bat'
 
-setproxy
+#setproxy
 
 
 fortune | cowsay

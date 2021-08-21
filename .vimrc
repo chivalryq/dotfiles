@@ -75,21 +75,23 @@ set pythonthreehome=$HOME\AppData\Local\Programs\Python\Python36-32\
 
 
 " Mapping ------------------{{{
-nnoremap H ^ 
+nnoremap H ^
 nnoremap L $
 
-" H和L的无敌快捷键
+" H和L的无敌快捷键{{{
 nnoremap dL d$
 nnoremap dH d^
 nnoremap cL c$
 nnoremap cH c^
 nnoremap yL y$
 nnoremap yH y^
+"}}}
 
 nnoremap k gk
 nnoremap gk k
 nnoremap j gj
 nnoremap gj j
+
 
 nnoremap - ddp
 nnoremap _ ddkP
@@ -134,16 +136,38 @@ nnoremap <c-k> :m .-2<CR>==
 nnoremap <leader>t :NERDTreeToggle<cr>
 
 " Git op / vim-fugitive mapping
-nmap <leader>gh :diffget //3<cr>
-nmap <leader>gu :diffget //2<cr>
-nmap <leader>gs :G<cr>
-" }}}
+nnoremap <leader>gh :diffget //3<cr>
+nnoremap <leader>gu :diffget //2<cr>
+nnoremap <leader>gs :G<cr>
+
+" 全选映射
+nnoremap <leader>sa ggVG
+
+" 避免缩紧丢失选区
+vnoremap < <gv
+vnoremap > >gv
+
+" 用一个与u联系比较强的键表示重做
+nnoremap U <c-r>
+
+" 删除行尾空格
+nmap <silent> <leader><Space><Space> :%s/\s\+$//<cr>
+
+" buffer 操作
+" 切换到上一个buffer
+nnoremap <leader><tab> :b#<cr>
+" 前后切换buffer
+nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
+nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
+" 指定名字切换buffer
+nnoremap <leader>bb :buffers<cr>:b<space>
+"}}}
 
 
 " Vimscript file settings ---------------------- {{{
 augroup filetype_vim
     autocmd!
-	autocmd FileType vim setlocal foldmethod=marker
+    autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
 " }}}
@@ -176,4 +200,6 @@ augroup NERDTree_cmd
 augroup END
 "}}}
 
-
+" vim-airline settings ---------{{{
+let g:airline#extensions#tabline#enabled = 1
+" }}}
