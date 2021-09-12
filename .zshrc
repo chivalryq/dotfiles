@@ -130,8 +130,13 @@ alias sz="source ~/.zshrc"
 #CLI tools
 alias cat='bat'
 
-#setproxy
+setproxy
 
+
+
+export GOPROXY=https://goproxy.io,direct
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
 fortune | cowsay
-

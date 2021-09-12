@@ -34,6 +34,7 @@ Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'joshdick/onedark'
 
 "always the latest
 Plug 'ryanoasis/vim-devicons'
@@ -161,6 +162,9 @@ nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :wri
 nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
 " 指定名字切换buffer
 nnoremap <leader>bb :buffers<cr>:b<space>
+
+" 保存当前文件
+nnoremap <leader>w :w<cr>
 "}}}
 
 
@@ -173,9 +177,11 @@ augroup END
 " }}}
 
 " Color scheme --------------{{{
-colorscheme gruvbox
-set background=dark
-
+colorscheme onedark
+syntax on
+highlight Normal ctermbg=None
+highlight LineNr ctermfg=DarkGrey
+"let g:onedark_termcolors=16
 "}}}
 
 " NERDTree settings ---------{{{

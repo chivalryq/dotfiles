@@ -12,6 +12,7 @@ ln -sF $DOTFILEDIR/.zshrc ~/.zshrc
 cp .ideavimrc ~
 
 #proxy
+echo "Please set proxy software, I'm gonna use 127.0.0.1:7890 as proxy"
 export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 
 #brew
@@ -23,7 +24,11 @@ brew install zsh-syntax-highlighting
 brew install jesseduffield/lazygit/lazygit
 brew tap homebrew/cask-fonts
 brew install font-jetbrains-mono-nerd-font
-echo "Please set font to font-jetbrains-mono-nerd-font in Terminal"
+brew install iterm2
+
+
+$(brew --prefix)/opt/fzf/install
+
  
 
 #install omz and plugin
@@ -32,5 +37,17 @@ wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - 
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/wting/autojump.git $REPODIR/autojump
-cd $REPODIR/autojump
+pushd $REPODIR/autojump
 ./install.py
+popd
+#Powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+
+#vim
+git clone https://github.com/joshdick/onedark.vim.git $REPODIR/onedark
+pushd $REPODIR/onedark
+mkdir ~/.vim/colors
+cp colors/onedark.vim ~/.vim/colors/
+cp autoload/onedark.vim ~/.vim/autoload/
+echo "Remember to import onedark color scheme (onedark/term/One Dark.itermscheme)in iTerm."
+echo "Remember to set font to font-jetbrains-mono-nerd-font in iTerm"
