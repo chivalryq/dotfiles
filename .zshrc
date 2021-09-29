@@ -100,6 +100,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export PATH=$PATH:/Users/qiaozp/go/bin
+
 #k8s
 source <(kubectl completion zsh)
 alias k=kubectl
@@ -140,3 +142,6 @@ export GOPROXY=https://goproxy.io,direct
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
 fortune | cowsay
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+

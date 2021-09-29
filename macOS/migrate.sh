@@ -9,6 +9,7 @@ rm ~/.vimrc
 rm ~/.zshrc
 ln -sF $DOTFILEDIR/.vimrc ~/.vimrc
 ln -sF $DOTFILEDIR/.zshrc ~/.zshrc
+ln -sF $DOTFILEDIR/.tmux.conf ~/.tmux.conf
 cp .ideavimrc ~
 
 #proxy
@@ -32,22 +33,37 @@ $(brew --prefix)/opt/fzf/install
  
 
 #install omz and plugin
-rm -rf $HOME/.oh-my-zsh
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/wting/autojump.git $REPODIR/autojump
-pushd $REPODIR/autojump
-./install.py
-popd
-#Powerlevel10k
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+config_zsh(){
+        echo "正在配置 zsh..."
+        rm -rf $HOME/.oh-my-zsh
+        wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+        git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+        git clone https://github.com/wting/autojump.git $REPODIR/autojump
+        pushd $REPODIR/autojump
+        ./install.py
+        popd
+        #Powerlevel10k
+        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+}
 
 #vim
-git clone https://github.com/joshdick/onedark.vim.git $REPODIR/onedark
-pushd $REPODIR/onedark
-mkdir ~/.vim/colors
-cp colors/onedark.vim ~/.vim/colors/
-cp autoload/onedark.vim ~/.vim/autoload/
-echo "Remember to import onedark color scheme (onedark/term/One Dark.itermscheme)in iTerm."
-echo "Remember to set font to font-jetbrains-mono-nerd-font in iTerm"
+config_vim(){
+        echo "正在配置 vim..."
+        git clone https://github.com/joshdick/onedark.vim.git $REPODIR/onedark
+        pushd $REPODIR/onedark
+        mkdir ~/.vim/colors
+        cp colors/onedark.vim ~/.vim/colors/
+        cp autoload/onedark.vim ~/.vim/autoload/
+        echo "Remember to import onedark color scheme (onedark/term/One Dark.itermscheme)in iTerm."
+        echo "Remember to set font to font-jetbrains-mono-nerd-font in iTerm"
+}
+
+config_tmux(){
+        echo "正在配置 tmux..."
+        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+        bash ~/.tmux/plugins/tpm/bin/install_plugins
+}
+config_zsh
+config_vim
+config_tmux
