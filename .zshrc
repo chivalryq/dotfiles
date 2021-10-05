@@ -102,39 +102,43 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH=$PATH:/Users/qiaozp/go/bin
 
-#k8s
-source <(kubectl completion zsh)
-alias k=kubectl
-complete -F __start_kubectl k
-alias kg="k get"
-alias kd="k describe"
-alias kde="k delete"
+setalias(){
+        #k8s
+        source <(kubectl completion zsh)
+        alias k=kubectl
+        complete -F __start_kubectl k
+        alias kg="k get"
+        alias kd="k describe"
+        alias kde="k delete"
 
-alias lg='lazygit'
-# proxy and noproxy
-if [ "$(uname)"=="Darwin" ]; then
-    #export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
-fi
-alias nop='echo "canceling proxy" && export https_proxy= http_proxy= all_proxy='
-alias setproxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
+        alias lg='lazygit'
+        # proxy and noproxy
+        if [ "$(uname)"=="Darwin" ]; then
+                #export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+        fi
+        alias nop='echo "canceling proxy" && export https_proxy= http_proxy= all_proxy='
+        alias setproxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
 
-# terraform
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/terraform terraform
-alias t='terraform'
+        # terraform
+        autoload -U +X bashcompinit && bashcompinit
+        complete -o nospace -C /usr/local/bin/terraform terraform
+        alias t='terraform'
 
-#ranger
-alias ra='ranger'
+        #ranger
+        alias ra='ranger'
 
-#quick source .zshrc
-alias sz="source ~/.zshrc"
+        #quick source .zshrc
+        alias sz="source ~/.zshrc"
 
-#CLI tools
-alias cat='bat'
+        #CLI tools
+        alias cat='bat'
+
+        #kubevela tools
+        source $HOME'/repo/vela-script/alias.sh'
+}
 
 setproxy
-
-
+setalias
 
 export GOPROXY=https://goproxy.io,direct
 
