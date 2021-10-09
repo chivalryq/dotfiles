@@ -70,7 +70,7 @@ ZSH_THEME="ys"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails oo many plugins slow dgit textmate ruby lighthouse)
 # Add wisely, as town shell startup.
-plugins=(git zsh-autosuggestions vi-mode zsh_reload zsh-syntax-highlighting autojump)
+plugins=(git zsh-autosuggestions vi-mode zsh-syntax-highlighting autojump)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -137,8 +137,8 @@ setalias(){
         source $HOME'/repo/vela-script/alias.sh'
 }
 
-setproxy
 setalias
+setproxy
 
 export GOPROXY=https://goproxy.io,direct
 
