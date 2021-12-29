@@ -64,6 +64,14 @@ config_tmux(){
         git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
         bash ~/.tmux/plugins/tpm/bin/install_plugins
 }
+
+config_lazygit(){
+        echo "正在配置 lazygit..."
+        mkdir -p ~/Library/Application\ Support/jesseduffield/lazygit
+        ln -sF $DOTFILEDIR/config/lazygit/config.yml ~/Library/Application\ Support/jesseduffield/lazygit/config.yml
+        
+}
 config_zsh
 config_vim
 config_tmux
+config_lazygit

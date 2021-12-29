@@ -109,6 +109,7 @@ setalias(){
         complete -F __start_kubectl k
         alias kg="k get"
         alias kd="k describe"
+        alias kc="k config"
         alias kde="k delete"
 
         alias lg='lazygit'
