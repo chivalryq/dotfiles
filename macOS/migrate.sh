@@ -68,7 +68,7 @@ config_tmux(){
 config_lazygit(){
         echo "正在配置 lazygit..."
         mkdir -p ~/Library/Application\ Support/jesseduffield/lazygit
-        ln -sF $DOTFILEDIR/config/lazygit/config.yml ~/Library/Application\ Support/jesseduffield/lazygit/config.yml
+        ln -sF $DOTFILEDIR/config/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
         
 }
 config_zsh
