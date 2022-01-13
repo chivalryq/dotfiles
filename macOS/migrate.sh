@@ -26,6 +26,7 @@ brew install jesseduffield/lazygit/lazygit
 brew tap homebrew/cask-fonts
 brew install font-jetbrains-mono-nerd-font
 brew install iterm2
+brew install alt-tab # migrate from win, make it possible to check out windows.
 
 
 $(brew --prefix)/opt/fzf/install
@@ -68,7 +69,7 @@ config_tmux(){
 config_lazygit(){
         echo "正在配置 lazygit..."
         mkdir -p ~/Library/Application\ Support/jesseduffield/lazygit
-        ln -sF $DOTFILEDIR/config/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
+        ln -sF $DOTFILEDIR/config/lazygit/config.yml ~/Library/Application\ Support/jesseduffield/lazygit/config.yml
         
 }
 config_zsh
