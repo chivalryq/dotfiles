@@ -29,12 +29,11 @@ Plug 'godlygeek/tabular'
 
 Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.vim'
-Plug 'flazz/vim-colorschemes'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'joshdick/onedark'
+Plug 'joshdick/onedark.vim'
 
 "always the latest
 Plug 'ryanoasis/vim-devicons'
@@ -67,8 +66,10 @@ nmap <silent> <F8> <Plug>MarkdownPreview        " 普通模式
 imap <silent> <F8> <Plug>MarkdownPreview        " 插入模式
 nmap <silent> <F9> <Plug>StopMarkdownPreview    " 普通模式
 imap <silent> <F9> <Plug>StopMarkdownPreview    " 插入模式
-set pythonthreedll=$HOME\AppData\Local\Programs\Python\Python36-32\python36.dll
-set pythonthreehome=$HOME\AppData\Local\Programs\Python\Python36-32\
+if has("win32")
+        set pythonthreedll=$HOME\AppData\Local\Programs\Python\Python36-32\python36.dll
+        set pythonthreehome=$HOME\AppData\Local\Programs\Python\Python36-32\
+endif
 
 
 "}}}
@@ -116,6 +117,7 @@ nnoremap <leader>sv :w<cr> :source $MYVIMRC<cr>
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 vnoremap <leader>" i"<esc>gva"<esc>
+
 " quick exit insert mode mode
 inoremap jk <esc>
 inoremap <esc> <nop>
@@ -165,6 +167,10 @@ nnoremap <leader>bb :buffers<cr>:b<space>
 
 " 保存当前文件
 nnoremap <leader>w :w<cr>
+
+" open or add a fold
+nnoremap <leader>o zo
+nnoremap <leader>c zc
 "}}}
 
 
@@ -182,6 +188,23 @@ syntax on
 highlight Normal ctermbg=None
 highlight LineNr ctermfg=DarkGrey
 "let g:onedark_termcolors=16
+
+" 使用iTerm2，支持24bit color, 开启这个功能
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
 "}}}
 
 " NERDTree settings ---------{{{
@@ -209,3 +232,4 @@ augroup END
 " vim-airline settings ---------{{{
 let g:airline#extensions#tabline#enabled = 1
 " }}}
+

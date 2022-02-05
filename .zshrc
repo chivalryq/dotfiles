@@ -136,6 +136,9 @@ setalias(){
 
         #kubevela tools
         source $HOME'/repo/vela-script/alias.sh'
+
+        #use nvim as vim
+        alias vim='nvim'
 }
 
 setalias

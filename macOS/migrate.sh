@@ -2,12 +2,12 @@
 # excuting script repeatedly should be safe
 DOTFILEDIR=~/repo/dotfiles
 REPODIR=~/repo
+CONFIGDIR=~/.config
 
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-rm ~/.vimrc
+# make sure CONFIGDIR is created
+mkdir -p $CONFIGDIR
+
 rm ~/.zshrc
-ln -sF $DOTFILEDIR/.vimrc ~/.vimrc
 ln -sF $DOTFILEDIR/.zshrc ~/.zshrc
 ln -sF $DOTFILEDIR/.tmux.conf ~/.tmux.conf
 cp .ideavimrc ~
@@ -27,6 +27,7 @@ brew tap homebrew/cask-fonts
 brew install font-jetbrains-mono-nerd-font
 brew install iterm2
 brew install alt-tab # migrate from win, make it possible to check out windows.
+brew install neovim
 
 
 $(brew --prefix)/opt/fzf/install
@@ -48,17 +49,18 @@ config_zsh(){
         git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 }
 
-#vim
-config_vim(){
-        echo "正在配置 vim..."
-        git clone https://github.com/joshdick/onedark.vim.git $REPODIR/onedark
-        pushd $REPODIR/onedark
-        mkdir ~/.vim/colors
-        cp colors/onedark.vim ~/.vim/colors/
-        cp autoload/onedark.vim ~/.vim/autoload/
-        echo "Remember to import onedark color scheme (onedark/term/One Dark.itermscheme)in iTerm."
+#neovim
+config_neovim(){
+        echo "正在配置 neovim..."
+        echo "正在配置 vim-plug..."
+        curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        mkdir -p $CONFIGDIR/nvim
+        echo "正在配置 init.vim..."
+        ln -sF $DOTFILEDIR/config/nvim/init.vim $CONFIGDIR/nvim/init.vim
         echo "Remember to set font to font-jetbrains-mono-nerd-font in iTerm"
 }
+
 
 config_tmux(){
         echo "正在配置 tmux..."
@@ -73,6 +75,6 @@ config_lazygit(){
         
 }
 config_zsh
-config_vim
+config_neovim
 config_tmux
 config_lazygit
