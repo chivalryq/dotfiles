@@ -28,6 +28,7 @@ brew install font-jetbrains-mono-nerd-font
 brew install iterm2
 brew install alt-tab # migrate from win, make it possible to check out windows.
 brew install neovim
+brew install node
 
 
 $(brew --prefix)/opt/fzf/install
@@ -55,9 +56,7 @@ config_neovim(){
         echo "正在配置 vim-plug..."
         curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        mkdir -p $CONFIGDIR/nvim
-        echo "正在配置 init.vim..."
-        ln -sF $DOTFILEDIR/config/nvim/init.vim $CONFIGDIR/nvim/init.vim
+        ln -sF $DOTFILEDIR/config/nvim $CONFIGDIR
         echo "Remember to set font to font-jetbrains-mono-nerd-font in iTerm"
 }
 
