@@ -5,6 +5,7 @@ set number
 set ignorecase
 set relativenumber
 set tabstop=4
+set shiftwidth=4
 set clipboard=unnamed
 set incsearch
 set hlsearch
