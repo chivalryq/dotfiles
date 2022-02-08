@@ -76,5 +76,12 @@
                 "youdao",
                 "haici"
         ],
-        "translator.proxy": "socks://127.0.0.1:7890"
+        "translator.proxy": "socks://127.0.0.1:7890",
+        "snippets.ultisnips.enable": true,
+        "snippets.ultisnips.directories": [
+                "Ultisnips",
+                "$HOME/.local/share/nvim/vim-snippets/Ultisnips"
+        ],
+        "snippets.snipmate.author": "Qiao",
+        "snippets.priority": 120
 }

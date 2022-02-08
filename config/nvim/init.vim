@@ -37,6 +37,8 @@ Plug 'joshdick/onedark.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'honza/vim-snippets'
+Plug 'mhinz/vim-startify'
 
 "always the latest
 Plug 'ryanoasis/vim-devicons'
