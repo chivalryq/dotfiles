@@ -40,6 +40,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'honza/vim-snippets'
 Plug 'mhinz/vim-startify'
+Plug 'preservim/nerdcommenter'
 
 "always the latest
 Plug 'ryanoasis/vim-devicons'
@@ -237,4 +238,5 @@ let g:go_highlight_operators = 1
 
 let g:go_fmt_autosave = 1
 let g:go_fmt_command = "goimports"
+let g:go_doc_popup_window = 1
 " }}}

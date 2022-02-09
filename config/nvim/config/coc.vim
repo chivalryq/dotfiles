@@ -1,4 +1,5 @@
 " Set needed extensions
+" 
 let g:coc_global_extensions = [
                         \ 'coc-json',
                         \'coc-vimlsp',
@@ -12,7 +13,7 @@ let g:coc_global_extensions = [
                         \]
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set updatetime=300
+set updatetime=100
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
@@ -130,8 +131,8 @@ let g:coc_snippet_prev = '<c-k>'
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 
-" Use tab to extend snippets
-inoremap <silent><expr> <TAB>
+" Use <leader>s to extend snippets
+inoremap <silent><expr> <leader>s
       \ pumvisible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -145,8 +146,8 @@ endfunction
 let g:coc_snippet_next = '<tab>'
 
 
-nmap <Leader>c [fzf-p]
-xmap <Leader>c [fzf-p]
+nmap <Leader>m [fzf-p]
+xmap <Leader>m [fzf-p]
 
 nnoremap <silent> [fzf-p]p     :<C-u>CocCommand fzf-preview.FromResources project_mru git<CR>
 nnoremap <silent> [fzf-p]gs    :<C-u>CocCommand fzf-preview.GitStatus<CR>
