@@ -21,6 +21,16 @@ set encoding=UTF-8
 
 "}}}
 
+" vim-airline settings ---------{{{
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_right_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_left_alt_sep= ''
+let g:airline_left_sep = ''
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+" }}}
+
 " Plugin --------------{{{
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
@@ -34,7 +44,7 @@ Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline-themes'
 Plug 'joshdick/onedark.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -43,6 +53,7 @@ Plug 'honza/vim-snippets'
 Plug 'mhinz/vim-startify'
 Plug 'preservim/nerdcommenter'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'AndrewRadev/switch.vim'
 
 "always the latest
 Plug 'ryanoasis/vim-devicons'
@@ -227,9 +238,6 @@ if (empty($TMUX))
 endif
 "}}}
 
-" vim-airline settings ---------{{{
-let g:airline#extensions#tabline#enabled = 1
-" }}}
 
 " import other config ---{{{
 for f in split(glob('~/.config/nvim/config/*.vim'), '\n')
