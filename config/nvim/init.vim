@@ -9,10 +9,11 @@ set shiftwidth=4
 set clipboard=unnamed
 set incsearch
 set hlsearch
-set expandtab
+set noexpandtab
 set noerrorbells
 set hidden
 set scrolloff=8
+set autowrite
 
 set signcolumn=yes
 set encoding=UTF-8
@@ -41,6 +42,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'honza/vim-snippets'
 Plug 'mhinz/vim-startify'
 Plug 'preservim/nerdcommenter'
+Plug 'AndrewRadev/splitjoin.vim'
 
 "always the latest
 Plug 'ryanoasis/vim-devicons'
@@ -183,6 +185,12 @@ nmap <Leader>e <Plug>(coc-translator-e)
 vmap <Leader>e <Plug>(coc-translator-ev)
 
 nnoremap <leader>e :CocCommand explorer<cr>
+
+" for code/compile/code circle
+map <leader>i :cprevious<CR>
+map <leader>o :cnext<CR>
+nnoremap <leader>a :cclose<CR>
+
 "}}}
 
 
@@ -230,13 +238,27 @@ endfor
 "}}}---
 
 " {{{ -------vim-go settings
+let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
 
 let g:go_fmt_autosave = 1
 let g:go_fmt_command = "goimports"
 let g:go_doc_popup_window = 1
+
+autocmd FileType go let b:go_fmt_options = {
+\ 'goimports': '-local ' .
+  \ trim(system('{cd '. shellescape(expand('%:h')) .' && go list -m;}')),
+\ }
+
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+
+" only use quickfix type list.
+let g:go_list_type = "quickfix"
 " }}}
