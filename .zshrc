@@ -139,6 +139,7 @@ setalias(){
 
         #use nvim as vim
         alias vim='nvim'
+		alias nv='nvim'
 }
 
 setalias

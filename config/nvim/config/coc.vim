@@ -1,5 +1,5 @@
 " Set needed extensions
-" 
+"
 let g:coc_global_extensions = [
                         \ 'coc-json',
                         \'coc-vimlsp',
@@ -128,7 +128,7 @@ let g:coc_snippet_prev = '<c-k>'
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 " Use <leader>s to extend snippets
-inoremap <silent><expr> <leader>s
+inoremap <silent><expr> <c-s>
       \ pumvisible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :

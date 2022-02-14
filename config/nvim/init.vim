@@ -1,4 +1,4 @@
-"Basic Setting {{{
+""Basic Setting {{{
 let mapleader="\<space>"
 set guifont=Courier_New:h12:cANSI
 set number
@@ -54,6 +54,8 @@ Plug 'mhinz/vim-startify'
 Plug 'preservim/nerdcommenter'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
+Plug 'ctrlpvim/ctrlp.vim' " Now only for GoDecls and GoDeclsDir
+Plug 'universal-ctags/ctags'
 
 "always the latest
 Plug 'ryanoasis/vim-devicons'
@@ -197,7 +199,7 @@ vmap <Leader>e <Plug>(coc-translator-ev)
 
 nnoremap <leader>e :CocCommand explorer<cr>
 
-" for code/compile/code circle
+" keys used in quickfix bar, for faster code/compile/code circle
 map <leader>i :cprevious<CR>
 map <leader>o :cnext<CR>
 nnoremap <leader>a :cclose<CR>
@@ -258,6 +260,9 @@ let g:go_highlight_generate_tags = 1
 let g:go_fmt_autosave = 1
 let g:go_fmt_command = "goimports"
 let g:go_doc_popup_window = 1
+let g:go_auto_type_info = 1
+let g:go_auto_sameids = 1
+set updatetime=100
 
 autocmd FileType go let b:go_fmt_options = {
 \ 'goimports': '-local ' .
@@ -266,7 +271,13 @@ autocmd FileType go let b:go_fmt_options = {
 
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>d  :GoDeclsDir<cr>
 
+" open _test.go file with :Ax command
+autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 " only use quickfix type list.
 let g:go_list_type = "quickfix"
 " }}}
