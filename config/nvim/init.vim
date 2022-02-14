@@ -56,6 +56,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'ctrlpvim/ctrlp.vim' " Now only for GoDecls and GoDeclsDir
 Plug 'universal-ctags/ctags'
+Plug 'voldikss/vim-floaterm'
 
 "always the latest
 Plug 'ryanoasis/vim-devicons'
@@ -240,13 +241,6 @@ if (empty($TMUX))
 endif
 "}}}
 
-
-" import other config ---{{{
-for f in split(glob('~/.config/nvim/config/*.vim'), '\n')
-    exe 'source' f
-endfor
-"}}}---
-
 " {{{ -------vim-go settings
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
@@ -281,3 +275,9 @@ autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 " only use quickfix type list.
 let g:go_list_type = "quickfix"
 " }}}
+
+" import other config ---{{{
+for f in split(glob('~/.config/nvim/config/*.vim'), '\n')
+    exe 'source' f
+endfor
+"}}}---
