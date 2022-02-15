@@ -152,10 +152,6 @@ nnoremap <leader>n :<c-u>nohlsearch<cr><c-l>
 "inoremap , ,<c-g>u
 
 " Moving text
-vnoremap <c-j> :m '>+1<CR>gv=gv
-vnoremap <c-k> :m '<-2<CR>gv=gv
-inoremap <c-j> <esc>:m .+1<CR>==i
-inoremap <c-k> <esc>:m .-2<CR>==i
 nnoremap <c-j> :m .+1<CR>==
 nnoremap <c-k> :m .-2<CR>==
 
