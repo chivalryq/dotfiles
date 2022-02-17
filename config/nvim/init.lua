@@ -25,12 +25,11 @@ vim.wo.relativenumber=true
 vim.wo.signcolumn='yes'
 
 vim.g.mapleader=' '
----}}}
+
 
 -- keymapping {{{
 local keymap = vim.api.nvim_set_keymap
 local opts ={noremap= true,silent=true}
-keymap('n','S',':w<cr>',opts)
 
 keymap('n','H' ,'^',opts)
 keymap('n','L', '$',opts)
@@ -133,7 +132,7 @@ keymap('n','<leader>i', ':cprevious<CR>',opts)
 keymap('n','<leader>o', ':cnext<CR>',opts)
 keymap('n','<leader>a', ':cclose<CR>',opts)
 
----}}}
+
 
 -- Plugins {{{
 -- automatically setup packer when first start
@@ -144,9 +143,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 require('packer').startup(function(use)
-  -- My plugins here
-  -- use 'foo1/bar1.nvim'
-  -- use 'foo2/bar2.nvim'
   use 'wbthomason/packer.nvim'
   use 'tpope/vim-sensible'
   use 'junegunn/seoul256.vim'
@@ -169,6 +165,14 @@ require('packer').startup(function(use)
   use 'ctrlpvim/ctrlp.vim' -- Now only for GoDecls and GoDeclsDir
   use 'universal-ctags/ctags'
   use 'voldikss/vim-floaterm'
+  use {
+	  'nvim-telescope/telescope.nvim',
+	  requires = { {'nvim-lua/plenary.nvim'} }
+  }
+  use {
+	  'nvim-treesitter/nvim-treesitter',
+	  run = ':TSUpdate'
+  }
 
   --always the latest
   use 'ryanoasis/vim-devicons'
@@ -180,7 +184,7 @@ require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
----}}}
+
 
 -- file fold settings {{{
 vim.cmd([[
@@ -188,14 +192,8 @@ augroup filetype_vim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
-
-augroup filetype_lua
-    autocmd!
-    autocmd FileType lua setlocal foldmethod=marker
-augroup END
-
 ]])
---- }}}
+
 
 -- Color scheme {{{
 vim.o.termguicolors = true
@@ -215,17 +213,17 @@ if (empty($TMUX))
   endif
 endif
 ]])
---- }}}
+
 
 -- vim-go settings {{{
-vim.g.go_highlight_types = 1
-vim.g.go_highlight_fields = 1
-vim.g.go_highlight_functions = 1
-vim.g.go_highlight_function_calls = 1
-vim.g.go_highlight_extra_types = 1
-vim.g.go_highlight_operators = 1
-vim.g.go_highlight_build_constraints = 1
-vim.g.go_highlight_generate_tags = 1
+--vim.g.go_highlight_types = 1
+--vim.g.go_highlight_fields = 1
+--vim.g.go_highlight_functions = 1
+--vim.g.go_highlight_function_calls = 1
+--vim.g.go_highlight_extra_types = 1
+--vim.g.go_highlight_operators = 1
+--vim.g.go_highlight_build_constraints = 1
+--vim.g.go_highlight_generate_tags = 1
 
 vim.g.go_fmt_autosave = 1
 vim.g.go_fmt_command = "goimports"
@@ -251,14 +249,27 @@ autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 ]])
 
 vim.g.go_list_type='quickfix'
---- }}}
 
--- import other config with old method {{{
+-- import other config with old method 
 vim.cmd([[
 for f in split(glob('~/.config/nvim/config/*.vim'), '\n')
     exe 'source' f
 endfor
 ]])
----}}}
 
 
+require'nvim-treesitter.configs'.setup {
+	sync_install = true,
+	ensure_installed={'go','vim','yaml','lua','json','gomod','gowork','bash','dockerfile'},
+
+	highlight = {
+		enable = true,
+	},
+	indent={
+		enable=true
+	}
+}
+vim.cmd([[
+	set foldmethod=expr
+	set foldexpr=nvim_treesitter#foldexpr()
+]])
