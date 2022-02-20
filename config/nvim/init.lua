@@ -1,4 +1,3 @@
--- Basic settings {{{
 -- vim.o global options
 -- vim.bo window options
 -- vim.bo buffer options
@@ -76,6 +75,7 @@ keymap('v','<leader>"','i"<esc>gva"<esc>',opts)
 keymap('i','jk', '<esc>',opts)
 keymap('i','<esc>', '',opts)
 
+
 keymap('n','<leader>n', ':<c-u>nohlsearch<cr><c-l>',opts)
 
 -- set comma and dot as new change start
@@ -108,8 +108,8 @@ keymap('n','U', '<c-r>',opts)
 -- 切换到上一个buffer
 keymap('n','<leader><tab>', ':b#<cr>',opts)
 -- 前后切换buffer
-keymap('n','<silent>',   '<tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>',opts)
-keymap('n','<silent>', '<s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>',opts)
+keymap('n', '<tab>', ':if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>',opts)
+keymap('n', '<s-tab>', ':if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>',opts)
 -- 指定名字切换buffer
 keymap('n','<leader>bb', ':buffers<cr>:b<space>',opts)
 
@@ -123,14 +123,17 @@ keymap('n','<Leader>ts', '<Plug>(coc-translator-p)',opts)
 keymap('v','<Leader>ts', '<Plug>(coc-translator-pv)',opts)
 -- echo
 keymap('n','<Leader>e', '<Plug>(coc-translator-e)',opts)
+keymap('n','<leader>o', ':cnext<CR>',opts)
+-- Basic settings {{{
 keymap('v','<Leader>e', '<Plug>(coc-translator-ev)',opts)
 
 keymap('n','<leader>e', ':CocCommand explorer<cr>',opts)
 
 -- keys used in quickfix bar, for faster code/compile/code circle
 keymap('n','<leader>i', ':cprevious<CR>',opts)
-keymap('n','<leader>o', ':cnext<CR>',opts)
 keymap('n','<leader>a', ':cclose<CR>',opts)
+
+keymap('n','<leader>u', ':PackerSync<CR>',opts)
 
 
 
@@ -139,58 +142,60 @@ keymap('n','<leader>a', ':cclose<CR>',opts)
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+	packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
 require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-  use 'tpope/vim-sensible'
-  use 'junegunn/seoul256.vim'
-  use 'godlygeek/tabular'
+	use 'wbthomason/packer.nvim'
+	use 'tpope/vim-sensible'
+	use 'junegunn/seoul256.vim'
+	use 'godlygeek/tabular'
 
-  use 'iamcco/mathjax-support-for-mkdp'
-  use 'iamcco/markdown-preview.vim'
-  use 'tpope/vim-fugitive'
-  use 'vim-airline/vim-airline'
-  --use 'vim-airline/vim-airline-themes'
-  use 'joshdick/onedark.vim'
-  use 'fatih/vim-go'--, { 'do': ':GoUpdateBinaries' }
-  use {'neoclide/coc.nvim', branch = 'release'}
-  use 'junegunn/fzf'--, { 'do': { -> fzf#install() } }
-  use 'honza/vim-snippets'
-  use 'mhinz/vim-startify'
-  use 'preservim/nerdcommenter'
-  use 'AndrewRadev/splitjoin.vim'
-  use 'AndrewRadev/switch.vim'
-  use 'ctrlpvim/ctrlp.vim' -- Now only for GoDecls and GoDeclsDir
-  use 'universal-ctags/ctags'
-  use 'voldikss/vim-floaterm'
-  use {
-	  'nvim-telescope/telescope.nvim',
-	  requires = { {'nvim-lua/plenary.nvim'} }
-  }
-  use {
-	  'nvim-treesitter/nvim-treesitter',
-	  run = ':TSUpdate'
-  }
+	use 'iamcco/mathjax-support-for-mkdp'
+	use 'iamcco/markdown-preview.vim'
+	use 'tpope/vim-fugitive'
+	use 'vim-airline/vim-airline'
+	--use 'vim-airline/vim-airline-themes'
+	use 'joshdick/onedark.vim'
+	use 'fatih/vim-go'--, { 'do': ':GoUpdateBinaries' }
+	use {'neoclide/coc.nvim', branch = 'release'}
+	use 'junegunn/fzf'--, { 'do': { -> fzf#install() } }
+	use 'honza/vim-snippets'
+	use 'preservim/nerdcommenter'
+	use 'AndrewRadev/splitjoin.vim'
+	use 'AndrewRadev/switch.vim'
+	use 'ctrlpvim/ctrlp.vim' -- Now only for GoDecls and GoDeclsDir
+	use 'universal-ctags/ctags'
+	use 'voldikss/vim-floaterm'
+	use {
+		'nvim-telescope/telescope.nvim',
+		requires = { {'nvim-lua/plenary.nvim'} }
+	}
+	use {
+		'nvim-treesitter/nvim-treesitter',
+		run = ':TSUpdate'
+	}
+	--use { 'glepnir/dashboard-nvim' }
+	use { 'goolord/alpha-nvim' }
+	use 'neovim/nvim-lspconfig'
 
-  --always the latest
-  use 'ryanoasis/vim-devicons'
+	--always the latest
+	use 'ryanoasis/vim-devicons'
 
 
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
+	-- Automatically set up your configuration after cloning packer.nvim
+	-- Put this at the end after all plugins
+	if packer_bootstrap then
+		require('packer').sync()
+	end
 end)
 
 
 -- file fold settings {{{
 vim.cmd([[
 augroup filetype_vim
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
+autocmd!
+autocmd FileType vim setlocal foldmethod=marker
 augroup END
 ]])
 
@@ -207,13 +212,12 @@ vim.cmd([[
 
 vim.cmd([[
 if (empty($TMUX))
-  if (has("nvim"))
-    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
+if (has("nvim"))
+"For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
 endif
 ]])
-
 
 -- vim-go settings {{{
 --vim.g.go_highlight_types = 1
@@ -234,7 +238,7 @@ vim.g.go_auto_sameids = 1
 vim.cmd([[
 autocmd FileType go let b:go_fmt_options = {
 \ 'goimports': '-local ' .
-  \ trim(system('{cd '. shellescape(expand('%:h')) .' && go list -m;}')),
+\ trim(system('{cd '. shellescape(expand('%:h')) .' && go list -m;}')),
 \ }
 
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
@@ -253,23 +257,22 @@ vim.g.go_list_type='quickfix'
 -- import other config with old method 
 vim.cmd([[
 for f in split(glob('~/.config/nvim/config/*.vim'), '\n')
-    exe 'source' f
+exe 'source' f
 endfor
 ]])
 
-
-require'nvim-treesitter.configs'.setup {
-	sync_install = true,
-	ensure_installed={'go','vim','yaml','lua','json','gomod','gowork','bash','dockerfile'},
-
-	highlight = {
-		enable = true,
-	},
-	indent={
-		enable=true
-	}
-}
+-- Airline settings
 vim.cmd([[
-	set foldmethod=expr
-	set foldexpr=nvim_treesitter#foldexpr()
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_right_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_left_alt_sep= ''
+let g:airline_left_sep = ''
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
 ]])
+
+
+require('plugins/treesitter')
+require('plugins/telescope')
+require('plugins/alpha-nvim')
