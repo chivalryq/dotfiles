@@ -158,7 +158,7 @@ require('packer').startup(function(use)
 	--use 'vim-airline/vim-airline-themes'
 	use 'joshdick/onedark.vim'
 	use 'fatih/vim-go'--, { 'do': ':GoUpdateBinaries' }
-	use {'neoclide/coc.nvim', branch = 'release'}
+	--use {'neoclide/coc.nvim', branch = 'release'}
 	use 'junegunn/fzf'--, { 'do': { -> fzf#install() } }
 	use 'honza/vim-snippets'
 	use 'preservim/nerdcommenter'
@@ -175,9 +175,15 @@ require('packer').startup(function(use)
 		'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate'
 	}
-	--use { 'glepnir/dashboard-nvim' }
 	use { 'goolord/alpha-nvim' }
-	use 'neovim/nvim-lspconfig'
+	use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
+	use 'hrsh7th/cmp-buffer'
+	use 'hrsh7th/cmp-nvim-lua'
+	use 'hrsh7th/cmp-nvim-lsp'
+	use 'hrsh7th/cmp-path'
+	use 'hrsh7th/cmp-cmdline'
+    use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
+	use 'onsails/lspkind-nvim' -- Icons for completion list
 
 	--always the latest
 	use 'ryanoasis/vim-devicons'
@@ -220,39 +226,29 @@ endif
 ]])
 
 -- vim-go settings {{{
---vim.g.go_highlight_types = 1
---vim.g.go_highlight_fields = 1
---vim.g.go_highlight_functions = 1
---vim.g.go_highlight_function_calls = 1
---vim.g.go_highlight_extra_types = 1
---vim.g.go_highlight_operators = 1
---vim.g.go_highlight_build_constraints = 1
---vim.g.go_highlight_generate_tags = 1
+--vim.g.go_fmt_autosave = 1
+--vim.g.go_fmt_command = "goimports"
+--vim.g.go_doc_popup_window = 1
+--vim.g.go_auto_type_info = 1
+--vim.g.go_auto_sameids = 1
 
-vim.g.go_fmt_autosave = 1
-vim.g.go_fmt_command = "goimports"
-vim.g.go_doc_popup_window = 1
-vim.g.go_auto_type_info = 1
-vim.g.go_auto_sameids = 1
+--vim.cmd([[
+--autocmd FileType go let b:go_fmt_options = {
+--\ 'goimports': '-local ' .
+--\ trim(system('{cd '. shellescape(expand('%:h')) .' && go list -m;}')),
+--\ }
 
-vim.cmd([[
-autocmd FileType go let b:go_fmt_options = {
-\ 'goimports': '-local ' .
-\ trim(system('{cd '. shellescape(expand('%:h')) .' && go list -m;}')),
-\ }
+--autocmd FileType go nmap <leader>b  <Plug>(go-build)
+--autocmd FileType go nmap <leader>r  <Plug>(go-run)
 
-autocmd FileType go nmap <leader>b  <Plug>(go-build)
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
-autocmd FileType go nmap <leader>d  :GoDeclsDir<cr>
+--" open _test.go file with :Ax command
+--autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+--autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+--autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+--autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+--]])
 
-" open _test.go file with :Ax command
-autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
-]])
-
-vim.g.go_list_type='quickfix'
+--vim.g.go_list_type='quickfix'
 
 -- import other config with old method 
 vim.cmd([[
@@ -276,3 +272,5 @@ let g:airline#extensions#tabline#left_alt_sep = ''
 require('plugins/treesitter')
 require('plugins/telescope')
 require('plugins/alpha-nvim')
+require('plugins/completion')
+
