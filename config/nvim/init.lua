@@ -94,7 +94,7 @@ keymap('n','<leader>gs', ':G<cr>',opts)
 -- 全选映射
 keymap('n','<leader>sa', 'ggVG',opts)
 
--- 避免缩紧丢失选区
+-- 避免缩进丢失选区
 keymap('v','<', '<gv',opts)
 keymap('v','>', '>gv',opts)
 
@@ -117,24 +117,17 @@ keymap('n','<leader>bb', ':buffers<cr>:b<space>',opts)
 keymap('n','Q', ':q<CR>',opts)
 keymap('n','S', ':w<CR>',opts)
 
--- NOTE: do NOT use `nore` mappings
--- popup
-keymap('n','<Leader>ts', '<Plug>(coc-translator-p)',opts)
-keymap('v','<Leader>ts', '<Plug>(coc-translator-pv)',opts)
--- echo
-keymap('n','<Leader>e', '<Plug>(coc-translator-e)',opts)
-keymap('n','<leader>o', ':cnext<CR>',opts)
--- Basic settings {{{
-keymap('v','<Leader>e', '<Plug>(coc-translator-ev)',opts)
+-- tree
+keymap('n','<leader>e',':NvimTreeToggle<cr>',opts)
 
-keymap('n','<leader>e', ':CocCommand explorer<cr>',opts)
 
--- keys used in quickfix bar, for faster code/compile/code circle
-keymap('n','<leader>i', ':cprevious<CR>',opts)
-keymap('n','<leader>a', ':cclose<CR>',opts)
 
-keymap('n','<leader>u', ':PackerSync<CR>',opts)
+-- keys for quickfix bar, for faster code/compile/code circle
+keymap('n','<leader>i', ':cprevious<cr>',opts)
+keymap('n','<leader>o', ':cnext<cr>',opts)
+keymap('n','<leader>a', ':cclose<cr>',opts)
 
+keymap('n','<leader>u', ':packersync<cr>',opts)
 
 
 -- Plugins {{{
@@ -184,6 +177,22 @@ require('packer').startup(function(use)
 	use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
 	use 'onsails/lspkind-nvim' -- Icons for completion list
+	use {
+		'kyazdani42/nvim-tree.lua',
+		requires = {
+			'kyazdani42/nvim-web-devicons', -- optional, for file icon
+		},
+		config = function() 
+			require'nvim-tree'.setup {
+			} 
+		end
+	}
+	use {
+		'lewis6991/gitsigns.nvim',
+		requires = {
+			'nvim-lua/plenary.nvim'
+		},
+	}
 
 	--always the latest
 	use 'ryanoasis/vim-devicons'
@@ -196,6 +205,21 @@ require('packer').startup(function(use)
 	end
 end)
 
+require('gitsigns').setup {
+	signs = {
+		add = { hl = 'GitGutterAdd', text = '+' },
+		change = { hl = 'GitGutterChange', text = '~' },
+		delete = { hl = 'GitGutterDelete', text = '_' },
+		topdelete = { hl = 'GitGutterDelete', text = '‾' },
+		changedelete = { hl = 'GitGutterChange', text = '~' },
+  },
+	current_line_blame = true, -- toggle with `:gitsigns toggle_current_line_blame`
+	current_line_blame_opts = {
+		virt_text = true,
+		virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+		ignore_whitespace = true,
+	},
+}
 
 -- file fold settings {{{
 vim.cmd([[
