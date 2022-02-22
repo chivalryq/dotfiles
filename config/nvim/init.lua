@@ -91,8 +91,6 @@ keymap('n','<leader>gh', ':diffget //3<cr>',opts)
 keymap('n','<leader>gu', ':diffget //2<cr>',opts)
 keymap('n','<leader>gs', ':G<cr>',opts)
 
--- 全选映射
-keymap('n','<leader>sa', 'ggVG',opts)
 
 -- 避免缩进丢失选区
 keymap('v','<', '<gv',opts)
@@ -128,6 +126,7 @@ keymap('n','<leader>o', ':cnext<cr>',opts)
 keymap('n','<leader>a', ':cclose<cr>',opts)
 
 keymap('n','<leader>u', ':PackerSync<cr>',opts)
+keymap('n','')
 
 
 -- Plugins {{{
