@@ -193,6 +193,7 @@ require('packer').startup(function(use)
 			'nvim-lua/plenary.nvim'
 		},
 	}
+	use 'windwp/nvim-autopairs'
 
 	--always the latest
 	use 'ryanoasis/vim-devicons'
@@ -278,9 +279,8 @@ let g:airline#extensions#tabline#left_alt_sep = ''
 ]])
 
 
-require('plugins/treesitter')
-require('plugins/telescope')
-require('plugins/alpha-nvim')
-require('plugins/completion')
-require('plugins/gitsigns')
+-- Import other files
+for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath('config')..'/lua/plugins', [[v:val =~ '\.lua$']])) do
+  require('plugins.'..file:gsub('%.lua$', ''))
+end
 
