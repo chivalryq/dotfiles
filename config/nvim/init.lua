@@ -127,7 +127,7 @@ keymap('n','<leader>i', ':cprevious<cr>',opts)
 keymap('n','<leader>o', ':cnext<cr>',opts)
 keymap('n','<leader>a', ':cclose<cr>',opts)
 
-keymap('n','<leader>u', ':packersync<cr>',opts)
+keymap('n','<leader>u', ':PackerSync<cr>',opts)
 
 
 -- Plugins {{{
@@ -205,27 +205,12 @@ require('packer').startup(function(use)
 	end
 end)
 
-require('gitsigns').setup {
-	signs = {
-		add = { hl = 'GitGutterAdd', text = '+' },
-		change = { hl = 'GitGutterChange', text = '~' },
-		delete = { hl = 'GitGutterDelete', text = '_' },
-		topdelete = { hl = 'GitGutterDelete', text = '‾' },
-		changedelete = { hl = 'GitGutterChange', text = '~' },
-  },
-	current_line_blame = true, -- toggle with `:gitsigns toggle_current_line_blame`
-	current_line_blame_opts = {
-		virt_text = true,
-		virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-		ignore_whitespace = true,
-	},
-}
 
 -- file fold settings {{{
 vim.cmd([[
 augroup filetype_vim
-autocmd!
-autocmd FileType vim setlocal foldmethod=marker
+	autocmd!
+	autocmd FileType vim setlocal foldmethod=marker
 augroup END
 ]])
 
@@ -297,4 +282,5 @@ require('plugins/treesitter')
 require('plugins/telescope')
 require('plugins/alpha-nvim')
 require('plugins/completion')
+require('plugins/gitsigns')
 
