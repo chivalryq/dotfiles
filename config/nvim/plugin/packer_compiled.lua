@@ -104,6 +104,11 @@ _G.packer_plugins = {
     path = "/Users/qiaozp/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
+  ["cmp-treesitter"] = {
+    loaded = true,
+    path = "/Users/qiaozp/.local/share/nvim/site/pack/packer/start/cmp-treesitter",
+    url = "https://github.com/ray-x/cmp-treesitter"
+  },
   ctags = {
     loaded = true,
     path = "/Users/qiaozp/.local/share/nvim/site/pack/packer/start/ctags",

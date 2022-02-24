@@ -4,7 +4,6 @@ vim.opt.shiftwidth=4
 vim.opt.tabstop=4
 vim.opt.updatetime=100
 vim.opt.autowrite=true
-vim.opt.showmode=true
 vim.opt.clipboard='unnamedplus'
 vim.opt.hidden=true
 vim.opt.hlsearch=true
