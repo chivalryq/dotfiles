@@ -255,6 +255,11 @@ _G.packer_plugins = {
     path = "/Users/qiaozp/.local/share/nvim/site/pack/packer/start/vim-go",
     url = "https://github.com/fatih/vim-go"
   },
+  ["vim-matchup"] = {
+    loaded = true,
+    path = "/Users/qiaozp/.local/share/nvim/site/pack/packer/start/vim-matchup",
+    url = "https://github.com/andymass/vim-matchup"
+  },
   ["vim-sensible"] = {
     loaded = true,
     path = "/Users/qiaozp/.local/share/nvim/site/pack/packer/start/vim-sensible",

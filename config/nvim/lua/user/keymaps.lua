@@ -11,6 +11,7 @@ keymap('n','cL', 'c$',opts)
 keymap('n','cH', 'c^',opts)
 keymap('n','yL', 'y$',opts)
 keymap('n','yH', 'y^',opts)
+
 -- idea from hrsh7th
 keymap('n','<C-h>', '<C-o>0zz',opts)
 keymap('n','<C-l>', '<C-i>0zz',opts)
@@ -85,6 +86,18 @@ keymap('n', '<tab>', ':if &modifiable && !&readonly && &modified <CR> :write<CR>
 keymap('n', '<s-tab>', ':if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>',opts)
 -- 指定名字切换buffer
 keymap('n','<leader>bb', ':buffers<cr>:b<space>',opts)
+
+-- Go to tab by number
+keymap('n','<leader>1','1gt',opts)
+keymap('n','<leader>2','2gt',opts)
+keymap('n','<leader>3','3gt',opts)
+keymap('n','<leader>4','4gt',opts)
+keymap('n','<leader>5','5gt',opts)
+keymap('n','<leader>6','6gt',opts)
+keymap('n','<leader>7','7gt',opts)
+keymap('n','<leader>8','8gt',opts)
+keymap('n','<leader>9','9gt',opts)
+keymap('n','<leader>0',':tablast<cr>',opts)
 
 -- Save & quit
 keymap('n','Q', ':q<CR>',opts)

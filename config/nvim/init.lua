@@ -36,11 +36,15 @@ require('packer').startup(function(use)
 		'nvim-telescope/telescope.nvim',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
+
+	-- highlight, indent.. based on syntax 
 	use {
 		'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate'
 	}
-	use { 'goolord/alpha-nvim' }
+	use 'andymass/vim-matchup'
+
+	use { 'goolord/alpha-nvim' } -- start page
 
 	-- completion plugins
 	use 'hrsh7th/cmp-buffer'
