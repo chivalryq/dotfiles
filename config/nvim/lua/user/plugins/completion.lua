@@ -45,8 +45,8 @@ cmp.setup({
 		['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	},
 	sources = cmp.config.sources({
-		{ name = 'nvim_lua' },
 		{ name = 'nvim_lsp' },
+		{ name = 'nvim_lua' },
 		{ name = 'buffer', keyword_length=5},
 		{ name = 'path' },
 	}),
@@ -54,10 +54,10 @@ cmp.setup({
 		format=lspkind.cmp_format{
 			withText=true,
 			menu={
-				buffer='[buf]',
-				nvim_lua='[api]',
+				buffer='[BUF]',
+				nvim_lua='[NVIM_LUA]',
 				nvim_lsp='[LSP]',
-				path='[path]',
+				path='[PATH]',
 			}
 		}
 	},

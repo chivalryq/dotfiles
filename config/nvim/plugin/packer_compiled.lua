@@ -124,6 +124,11 @@ _G.packer_plugins = {
     path = "/Users/qiaozp/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
     url = "https://github.com/onsails/lspkind-nvim"
   },
+  ["lspsaga.nvim"] = {
+    loaded = true,
+    path = "/Users/qiaozp/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
+    url = "https://github.com/tami5/lspsaga.nvim"
+  },
   ["markdown-preview.vim"] = {
     loaded = true,
     path = "/Users/qiaozp/.local/share/nvim/site/pack/packer/start/markdown-preview.vim",
@@ -148,6 +153,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/qiaozp/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-lsp-installer"] = {
+    loaded = true,
+    path = "/Users/qiaozp/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
+    url = "https://github.com/williamboman/nvim-lsp-installer"
   },
   ["nvim-lspconfig"] = {
     loaded = true,

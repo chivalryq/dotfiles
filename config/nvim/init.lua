@@ -33,14 +33,18 @@ local opts ={noremap= true,silent=true}
 keymap('n','H' ,'^',opts)
 keymap('n','L', '$',opts)
 
--- H和L的无敌快捷键{{{
+-- H和L的无敌快捷键
 keymap('n','dL', 'd$',opts)
 keymap('n','dH', 'd^',opts)
 keymap('n','cL', 'c$',opts)
 keymap('n','cH', 'c^',opts)
 keymap('n','yL', 'y$',opts)
 keymap('n','yH', 'y^',opts)
---}}}
+-- idea from hrsh7th
+keymap('n','<C-h>', '<C-o>0zz',opts)
+keymap('n','<C-l>', '<C-i>0zz',opts)
+keymap('i','<C-h>', '<Left>',opts)
+keymap('i','<C-l>', '<Right>',opts)
 
 keymap('n','k', 'gk',opts)
 keymap('n','j', 'gj',opts)
@@ -126,7 +130,6 @@ keymap('n','<leader>o', ':cnext<cr>',opts)
 keymap('n','<leader>a', ':cclose<cr>',opts)
 
 keymap('n','<leader>u', ':PackerSync<cr>',opts)
-keymap('n','')
 
 
 -- Plugins {{{
@@ -168,22 +171,28 @@ require('packer').startup(function(use)
 		run = ':TSUpdate'
 	}
 	use { 'goolord/alpha-nvim' }
-	use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
+
+	-- completion plugins
 	use 'hrsh7th/cmp-buffer'
-	use 'hrsh7th/cmp-nvim-lua'
 	use 'hrsh7th/cmp-nvim-lsp'
+	use 'hrsh7th/cmp-nvim-lua'
 	use 'hrsh7th/cmp-path'
 	use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
+
+	-- LSP
+	use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
 	use 'onsails/lspkind-nvim' -- Icons for completion list
+	use 'tami5/lspsaga.nvim' -- for more lsp feature
+	use 'williamboman/nvim-lsp-installer' -- Simple to use language server
+
 	use {
 		'kyazdani42/nvim-tree.lua',
 		requires = {
 			'kyazdani42/nvim-web-devicons', -- optional, for file icon
 		},
-		config = function() 
-			require'nvim-tree'.setup {
-			} 
+		config = function()
+			require'nvim-tree'.setup { }
 		end
 	}
 	use {
@@ -279,7 +288,9 @@ let g:airline#extensions#tabline#left_alt_sep = ''
 
 
 -- Import other files
-for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath('config')..'/lua/plugins', [[v:val =~ '\.lua$']])) do
-  require('plugins.'..file:gsub('%.lua$', ''))
+for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath('config')..'/lua/user/plugins', [[v:val =~ '\.lua$']])) do
+  require('user.plugins.'..file:gsub('%.lua$', ''))
 end
+
+require("user.lsp")
 
