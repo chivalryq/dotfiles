@@ -1,0 +1,17 @@
+vim.opt.encoding='UTF-8'
+vim.opt.expandtab=false
+vim.opt.shiftwidth=4
+vim.opt.tabstop=4
+vim.opt.updatetime=100
+vim.opt.autowrite=true
+vim.opt.showmode=true
+vim.opt.clipboard='unnamedplus'
+vim.opt.hidden=true
+vim.opt.hlsearch=true
+vim.opt.ignorecase=true
+vim.opt.incsearch=true
+vim.opt.errorbells=false
+vim.opt.scrolloff=8
+vim.opt.number=true
+vim.opt.relativenumber=true
+vim.opt.signcolumn='yes'

@@ -1,28 +1,3 @@
--- vim.o global options
--- vim.bo window options
--- vim.bo buffer options
-vim.o.encoding='UTF-8'
-vim.bo.expandtab=false
-vim.o.expandtab=false
-vim.bo.shiftwidth=4
-vim.o.shiftwidth=4
-vim.bo.tabstop=4
-vim.o.tabstop=4
-
-vim.o.updatetime=100
-vim.o.autowrite=true
-vim.o.clipboard='unnamed'
-vim.o.hidden=true
-vim.o.hlsearch=true
-vim.o.ignorecase=true
-vim.o.incsearch=true
-vim.o.errorbells=false
-vim.o.scrolloff=8
-
-vim.wo.number=true
-vim.wo.relativenumber=true
-vim.wo.signcolumn='yes'
-
 vim.g.mapleader=' '
 
 
@@ -202,6 +177,7 @@ require('packer').startup(function(use)
 		},
 	}
 	use 'windwp/nvim-autopairs'
+	use 'L3MON4D3/LuaSnip'
 
 	--always the latest
 	use 'ryanoasis/vim-devicons'
@@ -292,5 +268,5 @@ for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath('config')..'/lua/user/plugin
   require('user.plugins.'..file:gsub('%.lua$', ''))
 end
 
-require("user.lsp")
-
+require('user.lsp')
+require('user.options')
