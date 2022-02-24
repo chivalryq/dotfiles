@@ -21,7 +21,6 @@ require('packer').startup(function(use)
 	use 'iamcco/markdown-preview.vim'
 	use 'tpope/vim-fugitive'
 	use 'vim-airline/vim-airline'
-	--use 'vim-airline/vim-airline-themes'
 	use 'joshdick/onedark.vim'
 	use 'fatih/vim-go'--, { 'do': ':GoUpdateBinaries' }
 	--use {'neoclide/coc.nvim', branch = 'release'}
