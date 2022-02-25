@@ -1,3 +1,4 @@
+local health = require "health"
 local fn = vim.fn
 
 -- Automatically install packer
@@ -82,6 +83,7 @@ return packer.startup(function(use)
 	use 'hrsh7th/cmp-path'
 	use 'hrsh7th/cmp-cmdline'
 	use 'ray-x/cmp-treesitter'
+	use 'saadparwaiz1/cmp_luasnip'
     use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
 
 	-- LSP
@@ -107,6 +109,7 @@ return packer.startup(function(use)
 	}
 	use 'windwp/nvim-autopairs'
 	use 'L3MON4D3/LuaSnip'
+	use 'rafamadriz/friendly-snippets'
 
 	--always the latest
 	use 'ryanoasis/vim-devicons'
@@ -114,7 +117,7 @@ return packer.startup(function(use)
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
-	if packer_bootstrap then
+	if PACKER_BOOTSTRAP then
 		require('packer').sync()
 	end
 end)

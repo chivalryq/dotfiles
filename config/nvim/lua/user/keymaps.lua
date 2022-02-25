@@ -114,3 +114,7 @@ keymap('n','<leader>o', ':cnext<cr>',opts)
 keymap('n','<leader>a', ':cclose<cr>',opts)
 
 keymap('n','<leader>u', ':PackerSync<cr>',opts)
+
+-- start lazygit
+keymap('n','<leader>G',':FloatermNew! lazygit<cr>',opts)
+keymap('n','<leader>R',':FloatermNew! ranger<cr>',opts)
