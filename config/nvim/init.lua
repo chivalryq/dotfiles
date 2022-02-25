@@ -31,18 +31,20 @@ require('packer').startup(function(use)
 	use 'AndrewRadev/switch.vim'
 	use 'ctrlpvim/ctrlp.vim' -- Now only for GoDecls and GoDeclsDir
 	use 'universal-ctags/ctags'
-	use 'voldikss/vim-floaterm'
+	use 'voldikss/vim-floaterm' -- Float terminal in nvim
+	-- Find files/grep/
 	use {
 		'nvim-telescope/telescope.nvim',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
-	-- highlight, indent.. based on syntax 
+	-- highlight, indent.. based on syntax
 	use {
 		'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate'
 	}
-	use 'andymass/vim-matchup'
+	use 'nvim-treesitter/nvim-treesitter-textobjects'
+	use 'andymass/vim-matchup' -- Better match up like %
 
 	use { 'goolord/alpha-nvim' } -- start page
 
@@ -144,7 +146,7 @@ endif
 
 --vim.g.go_list_type='quickfix'
 
--- import other config with old method 
+-- import other config with old method
 vim.cmd([[
 for f in split(glob('~/.config/nvim/config/*.vim'), '\n')
 exe 'source' f
