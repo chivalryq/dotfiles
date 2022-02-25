@@ -53,7 +53,7 @@ local opts ={noremap= true,silent=true}
 keymap('n','<leader>fb' ,":Telescope find_files<cr>",opts)
 keymap('n','<leader>fs' ,":Telescope treesitter<cr>",opts)
 keymap('n','<leader>fg' ,":Telescope live_grep<cr>",opts)
-keymap('n','<leader>fr' ,":Telescope lsp_references theme=cursor<cr>",opts)
+keymap('n','<leader>r' ,":Telescope lsp_references theme=cursor<cr>",opts)
 keymap('n','<leader>fa' ,":Telescope autocommands<cr>",opts)
 keymap('n','<leader>fo' ,":Telescope vim_options<cr>",opts)
 keymap('n','<leader>ff' ,":Telescope current_buffer_fuzzy_find<cr>",opts)
