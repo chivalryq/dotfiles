@@ -15,10 +15,10 @@ configs.setup({
 	incremental_selection = {
 		enable = true,
 		keymaps = {
-			init_selection = "<C-w>",
-			node_incremental = "<C-w>",
+			init_selection = "<leader>w",
+			node_incremental = "<leader>w",
 			scope_incremental = "grc", -- not used
-			node_decremental = "<C-s>",
+			node_decremental = "<leader>s",
 		},
 	},
 	textobjects = {

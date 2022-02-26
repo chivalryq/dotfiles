@@ -139,6 +139,11 @@ _G.packer_plugins = {
     path = "/Users/qiaozp/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  ["goto-preview"] = {
+    loaded = true,
+    path = "/Users/qiaozp/.local/share/nvim/site/pack/packer/start/goto-preview",
+    url = "https://github.com/rmagatti/goto-preview"
+  },
   ["lspkind-nvim"] = {
     loaded = true,
     path = "/Users/qiaozp/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
