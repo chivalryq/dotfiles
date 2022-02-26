@@ -1,4 +1,4 @@
-vim.g.mapleader=' '
+vim.g.mapleader = " "
 
 -- file fold settings {{{
 vim.cmd([[
@@ -8,10 +8,9 @@ augroup filetype_vim
 augroup END
 ]])
 
-
 -- Color scheme {{{
 vim.o.termguicolors = true
-vim.cmd [[silent! colorscheme onedark]]
+vim.cmd([[silent! colorscheme onedark]])
 -- vim.g.colors_name=onedark
 vim.cmd([[
 	syntax on
@@ -71,13 +70,12 @@ let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 ]])
 
-
 -- Import other files
-for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath('config')..'/lua/user/plugins', [[v:val =~ '\.lua$']])) do
-  require('user.plugins.'..file:gsub('%.lua$', ''))
+for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/user/plugins", [[v:val =~ '\.lua$']])) do
+	require("user.plugins." .. file:gsub("%.lua$", ""))
 end
 
-require "user.options"
-require "user.keymaps"
-require "user.plugins"
-require "user.lsp"
+require("user.options")
+require("user.keymaps")
+require("user.plugins")
+require("user.lsp")
