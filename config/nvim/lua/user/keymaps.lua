@@ -117,3 +117,4 @@ keymap("n", "<leader>R", ":FloatermNew! ranger<cr>", opts)
 
 -- format code
 keymap("n", "<leader>F", ":Format<cr>", opts)
+

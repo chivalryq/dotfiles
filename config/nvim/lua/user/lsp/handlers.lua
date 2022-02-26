@@ -81,17 +81,20 @@ local function lsp_keymaps(bufnr)
 	)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 end
 
 M.on_attach = function(client, bufnr)
+	-- we'll use null-ls as language server to do these
 	if client.name == "tsserver" then
 		client.resolved_capabilities.document_formatting = false
+	end
+	if client.name == "gopls" then
+		client.resolved_capabilities.document_formatting = false
+		client.resolved_capabilities.document_range_formatting = false
 	end
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
 end
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
@@ -100,5 +103,13 @@ if not status_ok then
 end
 
 M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+
+-- add command and auto formatting before save buffer
+vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
+vim.cmd([[
+	augroup format_on_save
+	autocmd!
+	autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
+	augroup end]])
 
 return M
