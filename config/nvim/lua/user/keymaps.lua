@@ -1,10 +1,15 @@
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
-keymap("n", "H", "^", opts)
-keymap("n", "L", "$", opts)
+-- Resize with arrows
+keymap("n", "<C-S-Down>", ":resize +2<CR>", opts)
+keymap("n", "<C-S-Up>", ":resize -2<CR>", opts)
+keymap("n", "<C-S-Left>", ":vertical resize -2<CR>", opts)
+keymap("n", "<C-S-Right>", ":vertical resize +2<CR>", opts)
 
 -- H和L的无敌快捷键
+keymap("n", "H", "^", opts)
+keymap("n", "L", "$", opts)
 keymap("n", "dL", "d$", opts)
 keymap("n", "dH", "d^", opts)
 keymap("n", "cL", "c$", opts)
@@ -12,7 +17,7 @@ keymap("n", "cH", "c^", opts)
 keymap("n", "yL", "y$", opts)
 keymap("n", "yH", "y^", opts)
 
--- idea from hrsh7th
+-- move idea from hrsh7th
 keymap("n", "<C-h>", "<C-o>0zz", opts)
 keymap("n", "<C-l>", "<C-i>0zz", opts)
 keymap("i", "<C-h>", "<Left>", opts)
@@ -57,9 +62,9 @@ keymap("n", "<leader>n", ":<c-u>nohlsearch<cr><c-l>", opts)
 keymap("i", ".", ".<c-g>u", opts)
 keymap("i", ",", ",<c-g>u", opts)
 
--- Moving text
-keymap("n", "<c-j>", ":m .+1<CR>==", opts)
-keymap("n", "<c-k>", ":m .-2<CR>==", opts)
+--Moving text
+--keymap("n", "<c-j>", ":m .+1<CR>==", opts)
+--keymap("n", "<c-k>", ":m .-2<CR>==", opts)
 
 -- Git op / vim-fugitive mapping
 keymap("n", "<leader>gh", ":diffget //3<cr>", opts)
@@ -117,4 +122,3 @@ keymap("n", "<leader>R", ":FloatermNew! ranger<cr>", opts)
 
 -- format code
 keymap("n", "<leader>F", ":Format<cr>", opts)
-
