@@ -29,7 +29,7 @@ endif
 ]])
 
 -- vim-go settings {{{
---vim.g.go_fmt_autosave = 1
+--vim.g.go_fmt_autosave = 0
 --vim.g.go_fmt_command = "goimports"
 --vim.g.go_doc_popup_window = 1
 --vim.g.go_auto_type_info = 1

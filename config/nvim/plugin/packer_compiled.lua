@@ -164,6 +164,11 @@ _G.packer_plugins = {
     path = "/Users/qiaozp/.local/share/nvim/site/pack/packer/start/nerdcommenter",
     url = "https://github.com/preservim/nerdcommenter"
   },
+  ["null-ls.nvim"] = {
+    loaded = true,
+    path = "/Users/qiaozp/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/Users/qiaozp/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
@@ -264,11 +269,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/qiaozp/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
-  },
-  ["vim-go"] = {
-    loaded = true,
-    path = "/Users/qiaozp/.local/share/nvim/site/pack/packer/start/vim-go",
-    url = "https://github.com/fatih/vim-go"
   },
   ["vim-matchup"] = {
     loaded = true,

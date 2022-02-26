@@ -50,7 +50,7 @@ return packer.startup(function(use)
 	use 'tpope/vim-fugitive'
 	use 'vim-airline/vim-airline'
 	use 'joshdick/onedark.vim'
-	use 'fatih/vim-go'--, { 'do': ':GoUpdateBinaries' }
+	--use 'fatih/vim-go'--, { 'do': ':GoUpdateBinaries' }
 	--use {'neoclide/coc.nvim', branch = 'release'}
 	use 'junegunn/fzf'--, { 'do': { -> fzf#install() } }
 	use 'honza/vim-snippets'
@@ -89,6 +89,7 @@ return packer.startup(function(use)
 	-- LSP
 	use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
 	use 'onsails/lspkind-nvim' -- Icons for completion list
+	use 'jose-elias-alvarez/null-ls.nvim' -- formmatter and linter
 	use 'tami5/lspsaga.nvim' -- for more lsp feature
 	use 'williamboman/nvim-lsp-installer' -- Simple to use language server
 

@@ -118,3 +118,6 @@ keymap('n','<leader>u', ':PackerSync<cr>',opts)
 -- start lazygit
 keymap('n','<leader>G',':FloatermNew! lazygit<cr>',opts)
 keymap('n','<leader>R',':FloatermNew! ranger<cr>',opts)
+
+-- format code
+keymap("n", "<leader>F", ":Format<cr>", opts)
