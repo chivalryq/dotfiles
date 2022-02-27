@@ -112,6 +112,13 @@ return packer.startup(function(use)
 	use("windwp/nvim-autopairs")
 	use("L3MON4D3/LuaSnip")
 	use("rafamadriz/friendly-snippets")
+	use({
+		"glacambre/firenvim",
+		run = function()
+			vim.fn["firenvim#install"](0)
+		end,
+	})
+	use("pseewald/vim-anyfold")
 
 	--always the latest
 	use("ryanoasis/vim-devicons")

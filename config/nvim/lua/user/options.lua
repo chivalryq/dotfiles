@@ -14,3 +14,5 @@ vim.opt.scrolloff = 8
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
+vim.opt.guifont = "JetBrains_Mono:h18" -- adjust font size in irenvim
+vim.opt.foldlevel = 99 -- open all folds
