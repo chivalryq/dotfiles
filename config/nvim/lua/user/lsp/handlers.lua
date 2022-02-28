@@ -82,6 +82,13 @@ local function lsp_keymaps(bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 end
 
+local lsp_signt_conf = {
+	bind = true, -- This is mandatory, otherwise border config won't get registered.
+	handler_opts = {
+		border = "rounded",
+	},
+}
+
 M.on_attach = function(client, bufnr)
 	-- we'll use null-ls as language server to do these
 	if client.name == "tsserver" then
@@ -91,6 +98,7 @@ M.on_attach = function(client, bufnr)
 		client.resolved_capabilities.document_formatting = false
 		client.resolved_capabilities.document_range_formatting = false
 	end
+	require("lsp_signature").on_attach(lsp_signt_conf) --add lsp_signature attached
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
 end

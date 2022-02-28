@@ -30,15 +30,6 @@ if not status_ok then
 	return
 end
 
--- Have packer use a popup window
-packer.init({
-	display = {
-		open_fn = function()
-			return require("packer.util").float({ border = "rounded" })
-		end,
-	},
-})
-
 return packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 	use("tpope/vim-sensible")
@@ -93,6 +84,7 @@ return packer.startup(function(use)
 	use("tami5/lspsaga.nvim") -- for more lsp feature
 	use("williamboman/nvim-lsp-installer") -- Simple to use language server
 	use("rmagatti/goto-preview") -- Better definition/implement preview
+	use({ "ray-x/lsp_signature.nvim" })
 
 	use({
 		"kyazdani42/nvim-tree.lua",
@@ -119,6 +111,17 @@ return packer.startup(function(use)
 		end,
 	})
 	use("pseewald/vim-anyfold")
+	use({
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+		config = function()
+			require("trouble").setup({
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			})
+		end,
+	})
 
 	--always the latest
 	use("ryanoasis/vim-devicons")
