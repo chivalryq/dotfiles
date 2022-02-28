@@ -132,3 +132,44 @@ keymap("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", opts)
 keymap("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", opts)
 keymap("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", opts)
 keymap("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", opts)
+
+-- hop keymaps
+
+keymap("n", "<leader><leader>w", ":lua require'hop'.hint_char2()<cr>", opts)
+keymap("n", "<leader><leader>l", ":lua require'hop'.hint_lines()<cr>", opts)
+keymap(
+	"n",
+	"f",
+	":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>",
+	opts
+)
+keymap(
+	"n",
+	"F",
+	":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",
+	opts
+)
+keymap(
+	"o",
+	"f",
+	":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
+	opts
+)
+keymap(
+	"o",
+	"F",
+	":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
+	opts
+)
+keymap(
+	"",
+	"t",
+	":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>",
+	opts
+)
+keymap(
+	"",
+	"T",
+	":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",
+	opts
+)

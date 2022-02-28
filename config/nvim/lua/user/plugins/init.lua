@@ -1,10 +1,5 @@
-require("user.plugins.plugins")
-require("user.plugins.alpha_nvim")
-require("user.plugins.airline")
-require("user.plugins.autopairs")
-require("user.plugins.completion")
-require("user.plugins.floaterm")
-require("user.plugins.gitsigns")
-require("user.plugins.lspsaga")
-require("user.plugins.telescope")
-require("user.plugins.treesitter")
+for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/user/plugins", [[v:val =~ '\.lua$']])) do
+	if file:gsub("%.lua$", "") ~= "init" then
+		require("user.plugins." .. file:gsub("%.lua$", ""))
+	end
+end
