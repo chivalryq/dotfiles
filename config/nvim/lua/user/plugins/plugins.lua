@@ -122,7 +122,6 @@ return packer.startup(function(use)
 			})
 		end,
 	})
-	--
 	-- substitutes for easyMotion
 	use({
 		"phaazon/hop.nvim",
@@ -132,6 +131,8 @@ return packer.startup(function(use)
 			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
 		end,
 	})
+	use("dstein64/vim-startuptime")
+	use({ "lewis6991/impatient.nvim", config = function() end })
 
 	--always the latest
 	use("ryanoasis/vim-devicons")

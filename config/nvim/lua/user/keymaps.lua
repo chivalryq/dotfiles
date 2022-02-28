@@ -20,8 +20,8 @@ keymap("n", "yL", "y$", opts)
 keymap("n", "yH", "y^", opts)
 
 -- move idea from hrsh7th
-keymap("n", "<C-h>", "<C-o>0zz", opts)
-keymap("n", "<C-l>", "<C-i>0zz", opts)
+keymap("n", "<C-h>", "<C-o>zz", opts)
+keymap("n", "<C-l>", "<C-i>zz", opts)
 keymap("i", "<C-h>", "<Left>", opts)
 keymap("i", "<C-l>", "<Right>", opts)
 
