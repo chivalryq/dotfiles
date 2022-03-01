@@ -85,6 +85,7 @@ return packer.startup(function(use)
 	use("williamboman/nvim-lsp-installer") -- Simple to use language server
 	use("rmagatti/goto-preview") -- Better definition/implement preview
 	use({ "ray-x/lsp_signature.nvim" })
+	use("simrat39/symbols-outline.nvim") -- Show syntax outline of file
 
 	use({
 		"kyazdani42/nvim-tree.lua",
@@ -110,7 +111,6 @@ return packer.startup(function(use)
 			vim.fn["firenvim#install"](0)
 		end,
 	})
-	use("pseewald/vim-anyfold")
 	use({
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
@@ -133,6 +133,7 @@ return packer.startup(function(use)
 	})
 	use("dstein64/vim-startuptime")
 	use({ "lewis6991/impatient.nvim", config = function() end })
+	use("Konfekt/FastFold")
 
 	--always the latest
 	use("ryanoasis/vim-devicons")
