@@ -39,7 +39,7 @@ return packer.startup(function(use)
 	use("iamcco/mathjax-support-for-mkdp")
 	use("iamcco/markdown-preview.vim")
 	use("tpope/vim-fugitive")
-	use("vim-airline/vim-airline")
+	use("nvim-lualine/lualine.nvim")
 	use("joshdick/onedark.vim")
 	--use 'fatih/vim-go'--, { 'do': ':GoUpdateBinaries' }
 	--use {'neoclide/coc.nvim', branch = 'release'}
@@ -73,6 +73,7 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lua")
 	use("hrsh7th/cmp-path")
 	use("hrsh7th/cmp-cmdline")
+	--use("uga-rosa/cmp-dictionary")
 	use("ray-x/cmp-treesitter")
 	use("saadparwaiz1/cmp_luasnip")
 	use("hrsh7th/nvim-cmp") -- Autocompletion plugin

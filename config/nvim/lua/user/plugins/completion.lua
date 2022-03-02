@@ -71,6 +71,7 @@ cmp.setup({
 		{ name = "buffer", keyword_length = 4 },
 		{ name = "path" },
 		{ name = "treesitter" },
+		--{ name = "dictionary", keyword_length = 2 },
 	}),
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
@@ -84,6 +85,7 @@ cmp.setup({
 				path = "[Path]",
 				treesitter = "[Tree]",
 				luasnip = "[Snippet]",
+				dictionary = "[Dict]",
 			},
 		}),
 	},
@@ -123,3 +125,4 @@ cmp.setup.cmdline(":", {
 		{ name = "cmdline" },
 	}),
 })
+

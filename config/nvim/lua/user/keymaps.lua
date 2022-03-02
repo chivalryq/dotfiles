@@ -39,11 +39,11 @@ keymap("n", "<leader>k", ":wincmd k<cr>", opts)
 keymap("n", "<leader>h", ":wincmd h<cr>", opts)
 keymap("n", "<leader>l", ":wincmd l<cr>", opts)
 
--- greatest remap ever, 选中并粘贴yank寄存器
-keymap("v", "<leader>p", "_dP", opts)
+-- 粘贴不丢失寄存器
+keymap("v", "p", '"_dP', opts)
 
 --(after copy a word) replace a word
-keymap("n", "<leader>p", "viwp", opts)
+keymap("keymap", "<leader>p", "viwp", opts)
 
 -- modify VIMRC faster
 keymap("n", "<leader>mv", ":vsplit $MYVIMRC<cr>", opts)
