@@ -94,7 +94,17 @@ return packer.startup(function(use)
 			"kyazdani42/nvim-web-devicons", -- optional, for file icon
 		},
 		config = function()
-			require("nvim-tree").setup({})
+			require("nvim-tree").setup({
+				hijack_cursor = true,
+				update_focused_file = {
+					enable = true,
+					update_cwd = true,
+					ignore_list = {},
+				},
+				filters = {
+					dotfiles = true,
+				},
+			})
 		end,
 	})
 	use({

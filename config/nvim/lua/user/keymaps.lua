@@ -43,7 +43,7 @@ keymap("n", "<leader>l", ":wincmd l<cr>", opts)
 keymap("v", "p", '"_dP', opts)
 
 --(after copy a word) replace a word
-keymap("keymap", "<leader>p", "viwp", opts)
+keymap("n", "<leader>p", "viwp", opts)
 
 -- modify VIMRC faster
 keymap("n", "<leader>mv", ":vsplit $MYVIMRC<cr>", opts)
