@@ -6,6 +6,7 @@ end
 configs.setup({
 	sync_install = true,
 	ensure_installed = { "go", "vim", "yaml", "lua", "json", "gomod", "gowork", "bash", "dockerfile" },
+
 	highlight = {
 		enable = true,
 	},
