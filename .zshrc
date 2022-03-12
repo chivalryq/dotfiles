@@ -1,4 +1,3 @@
-# If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -104,9 +103,7 @@ export PATH=$PATH:/Users/qiaozp/go/bin
 
 setalias(){
         #k8s
-        source <(kubectl completion zsh)
         alias k=kubectl
-        complete -F __start_kubectl k
         alias kg="k get"
         alias kd="k describe"
         alias kc="k config"
@@ -118,6 +115,7 @@ setalias(){
                 #export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
         fi
         alias nop='echo "canceling proxy" && export https_proxy= http_proxy= all_proxy='
+        alias nops='export https_proxy= http_proxy= all_proxy='
         alias setproxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
 
         # terraform
@@ -150,9 +148,11 @@ export GOPROXY=https://goproxy.io,direct
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
-fortune | cowsay
+# fortune | cowsay
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
 eval $(thefuck --alias)
+export PATH="/usr/local/opt/node@14/bin:$PATH"
+nops
