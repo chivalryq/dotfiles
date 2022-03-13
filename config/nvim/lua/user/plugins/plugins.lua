@@ -41,7 +41,7 @@ return packer.startup(function(use)
 	use("tpope/vim-fugitive")
 	use("nvim-lualine/lualine.nvim")
 	use("joshdick/onedark.vim")
-	--use 'fatih/vim-go'--, { 'do': ':GoUpdateBinaries' }
+	use("fatih/vim-go") --, { 'do': ':GoUpdateBinaries' }
 	--use {'neoclide/coc.nvim', branch = 'release'}
 	use("junegunn/fzf") --, { 'do': { -> fzf#install() } }
 	use("honza/vim-snippets")
@@ -114,8 +114,13 @@ return packer.startup(function(use)
 		},
 	})
 	use("windwp/nvim-autopairs")
-	use("L3MON4D3/LuaSnip")
-	use("rafamadriz/friendly-snippets")
+	use({
+		"L3MON4D3/LuaSnip",
+		requires = "rafamadriz/friendly-snippets",
+		config = function()
+			require("user.snippets")
+		end,
+	})
 	use({
 		"glacambre/firenvim",
 		run = function()
