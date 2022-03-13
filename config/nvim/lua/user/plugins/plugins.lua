@@ -144,7 +144,15 @@ return packer.startup(function(use)
 	})
 	use("dstein64/vim-startuptime")
 	use({ "lewis6991/impatient.nvim", config = function() end })
-	use("Konfekt/FastFold")
+	use({
+		"ur4ltz/surround.nvim",
+		config = function()
+			require("surround").setup({ mappings_style = "sandwich" })
+		end,
+	})
+	use("andrewstuart/vim-kubernetes")
+	use("moll/vim-bbye")
+	use("christoomey/vim-tmux-navigator")
 
 	--always the latest
 	use("ryanoasis/vim-devicons")
