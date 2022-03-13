@@ -177,3 +177,6 @@ keymap(
 )
 
 keymap("n", "<leader>t", ":SymbolsOutline<cr>", opts)
+
+-- delete buffer without change the window structure
+keymap("n", "<C-D>", ":Bdelete", opts)
