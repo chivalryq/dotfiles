@@ -33,11 +33,14 @@ keymap("n", "gj", "j", opts)
 keymap("n", "-", "ddp", opts)
 keymap("n", "_", "ddkP", opts)
 
--- for smooth windows swtich
-keymap("n", "<leader>j", ":wincmd j<cr>", opts)
-keymap("n", "<leader>k", ":wincmd k<cr>", opts)
-keymap("n", "<leader>h", ":wincmd h<cr>", opts)
-keymap("n", "<leader>l", ":wincmd l<cr>", opts)
+-- For smooth windows swtich
+-- Basically this can move both inter and inner vim and tmux
+-- See: https://github.com/christoomey/vim-tmux-navigator
+vim.g.tmux_navigator_no_mappings = 1
+keymap("n", "<c-j>", ":TmuxNavigateDown<cr>", opts)
+keymap("n", "<c-k>", ":TmuxNavigateUp<cr>", opts)
+keymap("n", "<c-h>", ":TmuxNavigateLeft<cr>", opts)
+keymap("n", "<c-l>", ":TmuxNavigateRight<cr>", opts)
 
 -- 粘贴不丢失寄存器
 keymap("v", "p", '"_dP', opts)
@@ -105,6 +108,7 @@ keymap("n", "<leader>9", "9gt", opts)
 keymap("n", "<leader>0", ":tablast<cr>", opts)
 
 -- Save & quit
+keymap("n", "<c-q>", ":q<CR>", opts)
 keymap("n", "Q", ":q<CR>", opts)
 keymap("n", "S", ":w<CR>", opts)
 
