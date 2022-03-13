@@ -1,4 +1,3 @@
 git:
   commit:
-    # this feat is not released
     signOff: true

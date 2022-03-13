@@ -10,6 +10,7 @@ mkdir -p $CONFIGDIR
 rm ~/.zshrc
 ln -sF $DOTFILEDIR/.zshrc ~/.zshrc
 ln -sF $DOTFILEDIR/.tmux.conf ~/.tmux.conf
+ln -sF $DOTFILEDIR/.yabairc ~/.yabairc
 cp .ideavimrc ~
 
 #proxy
@@ -53,9 +54,6 @@ config_zsh(){
 #neovim
 config_neovim(){
         echo "正在配置 neovim..."
-        echo "正在配置 vim-plug..."
-        curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         ln -sF $DOTFILEDIR/config/nvim $CONFIGDIR
         echo "Remember to set font to font-jetbrains-mono-nerd-font in iTerm"
 }
@@ -69,9 +67,8 @@ config_tmux(){
 
 config_lazygit(){
         echo "正在配置 lazygit..."
-        mkdir -p ~/Library/Application\ Support/jesseduffield/lazygit
-        ln -sF $DOTFILEDIR/config/lazygit/config.yml ~/Library/Application\ Support/jesseduffield/lazygit/config.yml
-        
+        mkdir -p ~/Library/Application\ Support/lazygit
+        ln -sF $DOTFILEDIR/config/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
 }
 config_zsh
 config_neovim
