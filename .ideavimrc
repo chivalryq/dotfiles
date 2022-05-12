@@ -1,16 +1,111 @@
-nnoremap H ^
-nnoremap L $
+""" Map leader to space ---------------------
+let mapleader="\<space>"
+
+""" basic settings
+set incsearch
+set clipboard=unnamed
+set showmode
+set scrolloff=8
+set visualbell
+set wildmenu
+set cmdheight=2
+set number relativenumber
 
 set ideajoin
 set surround
 set hlsearch
-set clipboard=unnamed
 set smartcaseset
 set ideajoin
 set history=100000
-let g:EasyMotion_override_acejump = 0
-let mapleader=" "
-set easymotion
 
+" Acejump
+let g:EasyMotion_override_acejump = 0
+set easymotion
+set keep-english-in-normal
+
+" NerdTree
+set NERDTree
+map <leader>e :NERDTreeToggle<CR>
+
+inoremap jk <Esc>
+set timeoutlen=1000
 clipboard+=ideaput
+
+""" mappings ------------------------------------------
+map U <C-R>
+
+" Better move
+nnoremap H ^
+nnoremap L $
+nnoremap Y y$
+
+" better try
+nnoremap <leader>vl :action IdeaVim.ReloadVimRc.reload<CR>
+nnoremap <leader>e :action ActivateProjectToolWindow<CR>
+nnoremap <leader>rn :action RenameElement<CR>
+nnoremap <leader>n :noh <CR>
+
+"imap <C-j> :action EditorDown
+"imap <C-k> :action EditorUp
+map <C-n> <Action>(MethodDown)
+map <C-p> <Action>(MethodUp)
+
+" Emulate vim
+nnoremap <C-o> :action Back<CR>
+nnoremap <C-i> :action Forward<CR>
+
+" Go-to commands
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gt :action GotoTest<CR>
+
+" find-like commands mappings
+nnoremap <leader>fa :action GotoAction<CR>
+nnoremap <leader>fh :action RecentFiles<CR>
+nnoremap <leader>fb :action GotoFile<CR>
+nnoremap <leader>fs :action GotoSymbol<CR>
+nnoremap <leader>fp :action FindInPath<CR>
+
+nnoremap <leader>rf :action ReformatCode<CR>
+
+" Switch between tabs"
+nnoremap tn gt
+nnoremap tb gT
+
+" Comment out
+map <leader>cc <Action>(CommentByLineComment)
+map <leader>cb <Action>(CommentByBlockComment)
+
+" Splitter and move from window
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <leader>- <Action>(SplitHorizontally)
+nnoremap <leader>\ <Action>(SplitVertically)
+
+" Debugging
+nnoremap <leader>ru :action Run<CR>
+nnoremap <leader>de :action Debug<CR>
+nnoremap <leader>b :action ToggleLineBreakpoint<CR>
+nnoremap <leader>o :action StepOver<CR>
+nnoremap <leader>i :action StepInto<CR>
+nnoremap <leader>t :action StepOut<CR>
+nnoremap <leader>c :action RunToCursor<CR>
+nnoremap <leader>x :action Stop<CR>
+nnoremap <leader>r :action Resume<CR>
+
+" nnoremap <leader>sw :action XDebugger.NewWatch<CR> " not working
+
+" VCS
+nnoremap <leader>gp :action Vcs.Push<CR>
+nnoremap <leader>gc :action Vcs.CheckinProject<CR>
+
+" Remove redundant colon for go develop
+nnoremap <leader>: ^f:x
+nnoremap <leader>ac yiw<esc>O// <esc>pA -
+
+" Move while insert
+imap <C-h> <Left>
+imap <C-l> <Right>
 
