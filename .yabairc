@@ -52,6 +52,7 @@ Security
 Status
 
 yabai -m rule --add label=DingTalk app="^钉钉$" space=1
+yabai -m rule --add label=DingTalk app="^阿里钉$" space=1
 yabai -m rule --add label=iTerm2 app="^iTerm$" space=2
 # yabai -m rule --add label=Goland app="^GoLand$" space=3
 
