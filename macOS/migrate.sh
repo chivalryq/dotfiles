@@ -37,6 +37,9 @@ brew install tmux
 brew install --cask alt-tab
 brew install autojump
 brew install k9s
+brew install koekeishiya/formulae/yabai
+brew install koekeishiya/formulae/skhd
+brew services start skhd
 
 
 
