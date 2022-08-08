@@ -7,7 +7,8 @@ export ZSH="/Users/qiaozp/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="ys"
+ZSH_THEME="bira"
+
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -69,7 +70,7 @@ ZSH_THEME="ys"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails oo many plugins slow dgit textmate ruby lighthouse)
 # Add wisely, as town shell startup.
-plugins=(git zsh-autosuggestions vi-mode zsh-syntax-highlighting autojump)
+plugins=(git zsh-autosuggestions vi-mode zsh-syntax-highlighting autojump kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -116,7 +117,7 @@ setalias(){
         fi
         alias nop='echo "canceling proxy" && export https_proxy= http_proxy= all_proxy='
         alias nops='export https_proxy= http_proxy= all_proxy='
-        alias setproxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
+        alias setproxy='export https_proxy=http://127.0.0.1:6152;export http_proxy=http://127.0.0.1:6152;export all_proxy=socks5://127.0.0.1:6153'
 
         # terraform
         autoload -U +X bashcompinit && bashcompinit
@@ -133,7 +134,9 @@ setalias(){
         alias cat='bat'
 
         #kubevela tools
-        source $HOME'/repo/vela-script/alias.sh'
+	if [ -f $HOME'/repo/vela-script/alias.sh' ]; then
+		source $HOME'/repo/vela-script/alias.sh'
+	fi
 
         #use nvim as vim
         alias vim='nvim'
@@ -143,7 +146,7 @@ setalias(){
 setalias
 setproxy
 
-export GOPROXY=https://goproxy.io,direct
+# export GOPROXY=https://goproxy.io,direct
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'

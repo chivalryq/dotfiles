@@ -14,10 +14,13 @@ ln -sF $DOTFILEDIR/.yabairc ~/.yabairc
 cp .ideavimrc ~
 
 #proxy
-echo "Please set proxy software, I'm gonna use 127.0.0.1:7890 as proxy"
-export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+echo "Please set proxy software, I'm gonna use 127.0.0.1:6153 (Surge) as proxy"
+# export https_proxy=http://127.0.0.1:13659 http_proxy=http://127.0.0.1:13659 all_proxy=socks5://127.0.0.1:13659
+# export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+export https_proxy=http://127.0.0.1:6152;export http_proxy=http://127.0.0.1:6152;export all_proxy=socks5://127.0.0.1:6153
 
 #brew
+brew install wget
 brew install fortune
 brew install cowsay
 brew install bat
@@ -30,6 +33,11 @@ brew install iterm2
 brew install alt-tab # migrate from win, make it possible to check out windows.
 brew install neovim
 brew install node
+brew install tmux
+brew install --cask alt-tab
+brew install autojump
+brew install k9s
+
 
 
 $(brew --prefix)/opt/fzf/install
