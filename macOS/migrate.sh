@@ -35,6 +35,7 @@ brew install neovim
 brew install node
 brew install tmux
 brew install --cask alt-tab
+brew install --cask gitify
 brew install autojump
 brew install k9s
 brew install koekeishiya/formulae/yabai
