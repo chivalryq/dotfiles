@@ -51,8 +51,11 @@ map <C-n> <Action>(MethodDown)
 map <C-p> <Action>(MethodUp)
 
 " Emulate vim
-nnoremap <C-o> :action Back<CR>
-nnoremap <C-i> :action Forward<CR>
+map <C-o> <Action>(Back)
+map <C-i> <Action>(Forward)
+
+map <Tab> <Action>(NextTab)
+map <S-Tab> <Action>(PreviousTab)
 
 " Go-to commands
 nnoremap gd :action GotoDeclaration<CR>
@@ -76,7 +79,7 @@ nnoremap tb gT
 map <leader>cc <Action>(CommentByLineComment)
 map <leader>cb <Action>(CommentByBlockComment)
 
-" Splitter and move from window
+
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
@@ -109,3 +112,13 @@ nnoremap <leader>ac yiw<esc>O// <esc>pA -
 imap <C-h> <Left>
 imap <C-l> <Right>
 
+
+" Navigate
+map ge <Action>(GotoNextError)
+map gE <Action>(GotoPreviousError)
+map gs <Action>(SelectInProjectView)
+
+" Window
+
+map <leader>q <Action>(HideActiveWindow)
+map <leader>l <Action>(ReformatCode)

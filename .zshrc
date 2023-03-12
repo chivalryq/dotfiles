@@ -109,6 +109,13 @@ setalias(){
         alias kd="k describe"
         alias kc="k config"
         alias kde="k delete"
+	    alias kga="k get app"
+	    alias kgaA="k get app -A"
+
+		alias nok="export KUBECONFIG="
+		alias lk="export KUBECONFIG=$(velad kubeconfig --host)"
+		alias ek='echo $KUBECONFIG'
+
 
         alias lg='lazygit'
         # proxy and noproxy
@@ -143,6 +150,9 @@ setalias(){
 		alias nv='nvim'
 }
 
+setgvm(){
+	source ${HOME}/.gvm/scripts/gvm
+}
 setalias
 setproxy
 
@@ -157,5 +167,8 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 
 eval $(thefuck --alias)
-export PATH="/usr/local/opt/node@14/bin:$PATH"
-nops
+export GOPATH="$HOME/go"
+export GOBIN="$HOME/go/bin"
+export PATH="/usr/local/opt/node@14/bin:$HOME/sdk/go1.17.13/bin:$HOME/go/bin:$PATH"
+
+source $HOME/.gvm/scripts/gvm
