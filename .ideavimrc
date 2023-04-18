@@ -69,12 +69,6 @@ nnoremap <leader>fb :action GotoFile<CR>
 nnoremap <leader>fs :action GotoSymbol<CR>
 nnoremap <leader>fp :action FindInPath<CR>
 
-nnoremap <leader>rf :action ReformatCode<CR>
-
-" Switch between tabs"
-nnoremap tn gt
-nnoremap tb gT
-
 " Comment out
 map <leader>cc <Action>(CommentByLineComment)
 map <leader>cb <Action>(CommentByBlockComment)
@@ -84,25 +78,27 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
-nnoremap <leader>- <Action>(SplitHorizontally)
-nnoremap <leader>\ <Action>(SplitVertically)
+nmap <leader>- <Action>(SplitHorizontally)
+nmap <leader>\\ <Action>(SplitVertically)
 
 " Debugging
-nnoremap <leader>ru :action Run<CR>
-nnoremap <leader>de :action Debug<CR>
+nnoremap <leader>r :action Run<CR>
+nnoremap <leader>d :action Debug<CR>
+nmap <leader><leader>d :action ChooseDebugConfiguration<CR>
+nmap <leader><leader>r :action ChooseRunConfiguration<CR>
 nnoremap <leader>b :action ToggleLineBreakpoint<CR>
 nnoremap <leader>o :action StepOver<CR>
 nnoremap <leader>i :action StepInto<CR>
 nnoremap <leader>t :action StepOut<CR>
 nnoremap <leader>c :action RunToCursor<CR>
 nnoremap <leader>x :action Stop<CR>
-nnoremap <leader>r :action Resume<CR>
+" Resume --> Go
+nnoremap <leader>g :action Resume<CR>
+nnoremap <leader>m :action XDebugger.MuteBreakpoints<CR>
+
+
 
 " nnoremap <leader>sw :action XDebugger.NewWatch<CR> " not working
-
-" VCS
-nnoremap <leader>gp :action Vcs.Push<CR>
-nnoremap <leader>gc :action Vcs.CheckinProject<CR>
 
 " Remove redundant colon for go develop
 nnoremap <leader>: ^f:x
@@ -116,9 +112,18 @@ imap <C-l> <Right>
 " Navigate
 map ge <Action>(GotoNextError)
 map gE <Action>(GotoPreviousError)
+map gn <Action>(VcsShowNextChangeMarker)
+map gN <Action>(VcsShowPrevChangeMarker)
 map gs <Action>(SelectInProjectView)
+map ga <Action>(Annotate)
+map gr <Action>(editRunConfigurations)
 
 " Window
-
 map <leader>q <Action>(HideActiveWindow)
+map <leader>w <Action>(CloseContent)
+
 map <leader>l <Action>(ReformatCode)
+
+" Keep in English when in normal mode
+set keep-english-in-normal
+set keep-english-in-normal-and-restore-in-insert
