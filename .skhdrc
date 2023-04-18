@@ -97,9 +97,9 @@ shift + alt - l : yabai -m window --swap east
 # focus window that was previously focused
 alt - i : yabai -m window --focus recent
 
-# focus window next or prev 
-alt - n : yabai -m window --focus next
-alt - b : yabai -m window --focus prev
+# focus space next or prev 
+alt - n : yabai -m space --focus next
+alt - b : yabai -m space --focus prev
 
 # move managed window
 # shift + cmd - h : yabai -m window --warp east
