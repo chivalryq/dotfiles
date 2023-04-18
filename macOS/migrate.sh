@@ -11,6 +11,7 @@ rm ~/.zshrc
 ln -sF $DOTFILEDIR/.zshrc ~/.zshrc
 ln -sF $DOTFILEDIR/.tmux.conf ~/.tmux.conf
 ln -sF $DOTFILEDIR/.yabairc ~/.yabairc
+ln -sF $DOTFILEDIR/.skhdrc ~/.skhdrc
 cp .ideavimrc ~
 
 #proxy
