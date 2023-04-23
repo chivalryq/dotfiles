@@ -206,3 +206,9 @@ alt - u : yabai -m window --toggle float;\
 #alt - p : yabai -m window --toggle sticky;\
           #yabai -m window --toggle topmost;\
           #yabai -m window --toggle pip
+# alt - return : osascript -e 'tell application "iTerm2" to create window with default profile command ""' || open -a iTerm
+cmd - return : open -a iTerm
+shift + cmd - return : open -a "Brave Browser" 
+
+# open Chrome.
+# cmd + shift - return : open -n -a "Google Chrome"

@@ -68,6 +68,7 @@ nnoremap <leader>fh :action RecentFiles<CR>
 nnoremap <leader>fb :action GotoFile<CR>
 nnoremap <leader>fs :action GotoSymbol<CR>
 nnoremap <leader>fp :action FindInPath<CR>
+nnoremap <leader>fq :action ProblemsView.QuickFixes<CR>
 
 " Comment out
 map <leader>cc <Action>(CommentByLineComment)
@@ -95,7 +96,6 @@ nnoremap <leader>x :action Stop<CR>
 " Resume --> Go
 nnoremap <leader>g :action Resume<CR>
 nnoremap <leader>m :action XDebugger.MuteBreakpoints<CR>
-
 
 
 " nnoremap <leader>sw :action XDebugger.NewWatch<CR> " not working
