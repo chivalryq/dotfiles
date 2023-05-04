@@ -72,7 +72,7 @@ ZSH_THEME="eastwood"
 # Add wisely, as town shell startup.
 plugins=(git zsh-autosuggestions vi-mode zsh-syntax-highlighting autojump kubectl)
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
