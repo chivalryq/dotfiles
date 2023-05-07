@@ -7,12 +7,13 @@ CONFIGDIR=~/.config
 # make sure CONFIGDIR is created
 mkdir -p $CONFIGDIR
 
-rm ~/.zshrc
-ln -sF $DOTFILEDIR/.zshrc ~/.zshrc
-ln -sF $DOTFILEDIR/.tmux.conf ~/.tmux.conf
-ln -sF $DOTFILEDIR/.yabairc ~/.yabairc
-ln -sF $DOTFILEDIR/.skhdrc ~/.skhdrc
-cp .ideavimrc ~
+link_profiles(){
+	ln -sF $DOTFILEDIR/.zshrc ~/.zshrc
+	ln -sF $DOTFILEDIR/.tmux.conf ~/.tmux.conf
+	ln -sF $DOTFILEDIR/.yabairc ~/.yabairc
+	ln -sF $DOTFILEDIR/.skhdrc ~/.skhdrc
+	cp .ideavimrc ~
+}
 
 #proxy
 echo "Please set proxy software, I'm gonna use 127.0.0.1:6153 (Surge) as proxy"
@@ -20,39 +21,39 @@ echo "Please set proxy software, I'm gonna use 127.0.0.1:6153 (Surge) as proxy"
 # export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 export https_proxy=http://127.0.0.1:6152;export http_proxy=http://127.0.0.1:6152;export all_proxy=socks5://127.0.0.1:6153
 
-#brew
-brew install wget
-brew install fortune
-brew install cowsay
-brew install bat
-brew install fzf
-brew install zsh-syntax-highlighting
-brew install jesseduffield/lazygit/lazygit
-brew tap homebrew/cask-fonts
-brew install font-jetbrains-mono-nerd-font
-brew install iterm2
-brew install alt-tab # migrate from win, make it possible to check out windows.
-brew install neovim
-brew install node
-brew install tmux
-brew install --cask alt-tab
-brew install --cask gitify
-brew install autojump
-brew install k9s
-brew install koekeishiya/formulae/yabai
-brew install koekeishiya/formulae/skhd
-brew tap FelixKratz/formulae
-brew install sketchybar
-brew services start skhd
-
-
-
-$(brew --prefix)/opt/fzf/install
+brew_installs(){
+	#brew
+	brew install wget
+	brew install fortune
+	brew install cowsay
+	brew install bat
+	brew install fzf
+	brew install ranger
+	brew install zsh-syntax-highlighting
+	brew install jesseduffield/lazygit/lazygit
+	brew tap homebrew/cask-fonts
+	brew install font-jetbrains-mono-nerd-font
+	brew install iterm2
+	brew install alt-tab # migrate from win, make it possible to check out windows.
+	brew install neovim
+	brew install node
+	brew install tmux
+	brew install --cask alt-tab
+	brew install --cask gitify
+	brew install autojump
+	brew install k9s
+	brew install koekeishiya/formulae/yabai
+	brew install koekeishiya/formulae/skhd
+	brew services start skhd
+	# For neovim telescopt
+	brew install ripgrep
+	$(brew --prefix)/opt/fzf/install
+}
 
  
 
 #install omz and plugin
-config_zsh(){
+config_omz(){
         echo "正在配置 zsh..."
         rm -rf $HOME/.oh-my-zsh
         wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
@@ -69,6 +70,7 @@ config_zsh(){
 #neovim
 config_neovim(){
         echo "正在配置 neovim..."
+        rm -rf $CONFIGDIR/nvim
         ln -sF $DOTFILEDIR/config/nvim $CONFIGDIR
         echo "Remember to set font to font-jetbrains-mono-nerd-font in iTerm"
 }
@@ -85,7 +87,10 @@ config_lazygit(){
         mkdir -p ~/Library/Application\ Support/lazygit
         ln -sF $DOTFILEDIR/config/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
 }
-config_zsh
+config_omz
 config_neovim
 config_tmux
 config_lazygit
+
+brew_installs
+link_profiles

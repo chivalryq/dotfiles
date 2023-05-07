@@ -1,4 +1,5 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+ZSH_TMUX_AUTOSTART_ONCE=true
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/qiaozp/.oh-my-zsh"
@@ -70,9 +71,9 @@ ZSH_THEME="eastwood"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails oo many plugins slow dgit textmate ruby lighthouse)
 # Add wisely, as town shell startup.
-plugins=(git zsh-autosuggestions vi-mode zsh-syntax-highlighting autojump kubectl)
+plugins=(git zsh-autosuggestions vi-mode zsh-syntax-highlighting autojump kubectl fzf)
 
-# source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -127,8 +128,8 @@ setalias(){
         alias setproxy='export https_proxy=http://127.0.0.1:6152;export http_proxy=http://127.0.0.1:6152;export all_proxy=socks5://127.0.0.1:6153'
 
         # terraform
-        autoload -U +X bashcompinit && bashcompinit
-        complete -o nospace -C /usr/local/bin/terraform terraform
+        # autoload -U +X bashcompinit && bashcompinit
+        # complete -o nospace -C /usr/local/bin/terraform terraform
         alias t='terraform'
 
         #ranger
