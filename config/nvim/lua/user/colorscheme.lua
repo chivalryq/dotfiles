@@ -1,7 +1,7 @@
 -- Color scheme {{{
 vim.o.termguicolors = true
-vim.cmd([[silent! colorscheme onedark]])
--- vim.g.colors_name=onedark
+vim.cmd.colorscheme("onedark")
+vim.cmd.syntax("on")
 vim.cmd([[
 	syntax on
 	highlight Normal ctermbg=None

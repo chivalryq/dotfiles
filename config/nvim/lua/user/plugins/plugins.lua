@@ -1,4 +1,4 @@
-local health = require("health")
+-- local health = require("health")
 local fn = vim.fn
 
 -- Automatically install packer
@@ -83,7 +83,15 @@ return packer.startup(function(use)
 	use("onsails/lspkind-nvim") -- Icons for completion list
 	use("jose-elias-alvarez/null-ls.nvim") -- formmatter and linter
 	use("tami5/lspsaga.nvim") -- for more lsp feature
-	use("williamboman/nvim-lsp-installer") -- Simple to use language server
+	-- use("williamboman/nvim-lsp-installer") -- Simple to use language server
+	use {
+		"williamboman/mason.nvim",
+		run = ":MasonUpdate" -- :MasonUpdate updates registry contents
+	}
+	use {
+		"williamboman/mason-lspconfig.nvim"
+	}
+
 	use("rmagatti/goto-preview") -- Better definition/implement preview
 	use({ "ray-x/lsp_signature.nvim" })
 	use("simrat39/symbols-outline.nvim") -- Show syntax outline of file

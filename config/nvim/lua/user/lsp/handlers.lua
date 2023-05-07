@@ -48,7 +48,7 @@ M.setup = function()
 		underline = true,
 		signs = true,
 	})
-	vim.cmd([[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]])
+	-- vim.cmd([[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]])
 	vim.cmd([[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]])
 end
 
@@ -117,14 +117,15 @@ if not status_ok then
 	return
 end
 
-M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 -- add command and auto formatting before save buffer
 vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 vim.cmd([[
 	augroup format_on_save
-	autocmd!
-	autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
-	augroup end]])
+	"autocmd!
+	"autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
+	"augroup end
+	]])
 
 return M

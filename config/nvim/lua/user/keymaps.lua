@@ -179,4 +179,21 @@ keymap(
 keymap("n", "<leader>t", ":SymbolsOutline<cr>", opts)
 
 -- delete buffer without change the window structure
-keymap("n", "<C-D>", ":Bdelete", opts)
+keymap("n", "<C-D>", ":Bdelete<cr>", opts)
+
+keymap("n", "<leader>M", ":Mason<cr>",opts)
+
+-- Telescope
+local builtin = require("telescope.builtin")
+-- Another way to map
+local map = vim.keymap.set
+keymap('n','<leader>fb' ,":Telescope find_files<cr>",opts)
+keymap('n','<leader>fs' ,":Telescope treesitter<cr>",opts)
+keymap('n','<leader>fg' ,":Telescope live_grep<cr>",opts)
+keymap('n','<leader>r' ,":Telescope lsp_references theme=cursor<cr>",opts)
+keymap('n','<leader>fa' ,":Telescope autocommands<cr>",opts)
+keymap('n','<leader>fo' ,":Telescope vim_options<cr>",opts)
+keymap('n','<leader>ff' ,":Telescope current_buffer_fuzzy_find<cr>",opts)
+-- In case you want to ignore some file like node_modules
+map('n','<C-p>',builtin.git_files,opts)
+
