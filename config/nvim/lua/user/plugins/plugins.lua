@@ -37,7 +37,7 @@ return packer.startup(function(use)
 	use("godlygeek/tabular")
 
 	use("iamcco/mathjax-support-for-mkdp")
-	use("iamcco/markdown-preview.vim")
+	use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 	use("tpope/vim-fugitive")
 	use("nvim-lualine/lualine.nvim")
 	use("joshdick/onedark.vim")

@@ -16,3 +16,7 @@ vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
 vim.opt.guifont = "JetBrains_Mono:h18" -- adjust font size in irenvim
 vim.opt.foldlevel = 99 -- open all folds
+
+vim.g.mkdp_browser = "/System/Volumes/Data/Applications/Microsoft Edge.app"
+vim.g.mkdp_auto_start = 1
+vim.g.mkdp_auto_close = 1
