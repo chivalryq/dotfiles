@@ -39,11 +39,14 @@ nnoremap H ^
 nnoremap L $
 nnoremap Y y$
 
-" better try
+
 nnoremap <leader>vl :action IdeaVim.ReloadVimRc.reload<CR>
 nnoremap <leader>e :action ActivateProjectToolWindow<CR>
 nnoremap <leader>rn :action RenameElement<CR>
 nnoremap <leader>n :noh <CR>
+map <leader>rs <Action>(ChangeSignature)
+nnoremap S :w<CR>
+
 
 "imap <C-j> :action EditorDown
 "imap <C-k> :action EditorUp
@@ -83,8 +86,8 @@ nmap <leader>- <Action>(SplitHorizontally)
 nmap <leader>\\ <Action>(SplitVertically)
 
 " Debugging
-nnoremap <leader>r :action Run<CR>
-nnoremap <leader>d :action Debug<CR>
+nnoremap <leader>ru :action Run<CR>
+nnoremap <leader>de :action Debug<CR>
 nmap <leader><leader>d :action ChooseDebugConfiguration<CR>
 nmap <leader><leader>r :action ChooseRunConfiguration<CR>
 nnoremap <leader>b :action ToggleLineBreakpoint<CR>

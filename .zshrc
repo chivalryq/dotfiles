@@ -153,9 +153,11 @@ setalias(){
 
 setgvm(){
 	source ${HOME}/.gvm/scripts/gvm
+	gvm use 1.19 > /dev/null
 }
 setalias
 setproxy
+setgvm
 
 # export GOPROXY=https://goproxy.io,direct
 
@@ -170,6 +172,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 eval $(thefuck --alias)
 export GOPATH="$HOME/go"
 export GOBIN="$HOME/go/bin"
-export PATH="/usr/local/opt/node@14/bin:$HOME/sdk/go1.17.13/bin:$HOME/go/bin:$PATH"
+export PATH="/usr/local/opt/node@14/bin:$HOME/go/bin:$PATH"
 
 source $HOME/.gvm/scripts/gvm
