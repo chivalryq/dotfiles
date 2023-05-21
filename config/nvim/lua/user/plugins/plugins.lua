@@ -1,7 +1,7 @@
 -- local health = require("health")
 local fn = vim.fn
 
--- Automatically install packer
+-- automatically install packer
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
 	PACKER_BOOTSTRAP = fn.system({
@@ -41,7 +41,7 @@ return packer.startup(function(use)
 	use("tpope/vim-fugitive")
 	use("nvim-lualine/lualine.nvim")
 	use("joshdick/onedark.vim")
-	use("fatih/vim-go") --, { 'do': ':GoUpdateBinaries' }
+	-- use("fatih/vim-go") --, { 'do': ':GoUpdateBinaries' }
 	--use {'neoclide/coc.nvim', branch = 'release'}
 	use("junegunn/fzf") --, { 'do': { -> fzf#install() } }
 	use("honza/vim-snippets")
@@ -93,8 +93,11 @@ return packer.startup(function(use)
 	}
 
 	use("rmagatti/goto-preview") -- Better definition/implement preview
-	use({ "ray-x/lsp_signature.nvim" })
+	use( "ray-x/lsp_signature.nvim" )
 	use("simrat39/symbols-outline.nvim") -- Show syntax outline of file
+	use{
+		"zbirenbaum/copilot.lua",
+	}
 
 	use({
 		"kyazdani42/nvim-tree.lua",
@@ -139,11 +142,7 @@ return packer.startup(function(use)
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
 		config = function()
-			require("trouble").setup({
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
+			require("trouble").setup()
 		end,
 	})
 	-- substitutes for easyMotion
@@ -166,6 +165,28 @@ return packer.startup(function(use)
 	use("andrewstuart/vim-kubernetes")
 	use("moll/vim-bbye")
 	use("christoomey/vim-tmux-navigator")
+
+	use {
+		"folke/which-key.nvim",
+		config = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 500
+			require("which-key").setup {
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			}
+		end
+	}
+
+	-- Debug
+	use ('mfussenegger/nvim-dap')
+	use ('leoluz/nvim-dap-go')
+	use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+	-- recommended by nvim-dap-ui to integrate
+	use {"folke/neodev.nvim"}
+	use ('theHamsta/nvim-dap-virtual-text')
+	use 'mortepau/codicons.nvim'
 
 	--always the latest
 	use("ryanoasis/vim-devicons")

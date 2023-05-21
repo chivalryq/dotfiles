@@ -70,9 +70,9 @@ keymap("i", ",", ",<c-g>u", opts)
 --keymap("n", "<c-k>", ":m .-2<CR>==", opts)
 
 -- Git op / vim-fugitive mapping
-keymap("n", "<leader>gh", ":diffget //3<cr>", opts)
-keymap("n", "<leader>gu", ":diffget //2<cr>", opts)
-keymap("n", "<leader>gs", ":G<cr>", opts)
+-- keymap("n", "<leader>gh", ":diffget //3<cr>", opts)
+-- keymap("n", "<leader>gu", ":diffget //2<cr>", opts)
+-- keymap("n", "<leader>gs", ":G<cr>", opts)
 
 -- 避免缩进丢失选区
 keymap("v", "<", "<gv", opts)
@@ -196,4 +196,14 @@ keymap('n','<leader>fo' ,":Telescope vim_options<cr>",opts)
 keymap('n','<leader>ff' ,":Telescope current_buffer_fuzzy_find<cr>",opts)
 -- In case you want to ignore some file like node_modules
 map('n','<C-p>',builtin.git_files,opts)
+
+-- Debug
+map('n', '<leader>de', ":lua require('dap').continue()<cr>")
+map('n', '<leader>g', ":lua require('dap').continue()<cr>")
+map('n', '<leader>b', ":lua require'dap'.toggle_breakpoint()<cr>")
+map('n', '<leader>o', ":lua require'dap'.step_over()<cr>")
+map('n', '<leader>i', ":lua require'dap'.step_into()<cr>")
+map('n', '<leader>dus', ":lua require'dap'.repl.open()<cr>")
+map('n', '<leader>dl', ":lua require('dap-go').debug_last_test()<cr>")
+map('n', '<leader>dl', ":lua require('dap-go').debug_last_test()<cr>")
 
