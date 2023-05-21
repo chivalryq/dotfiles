@@ -80,7 +80,7 @@
 alt - r :
     /usr/bin/env osascript <<< \
         "display notification \"Restarting Yabai\" with title \"Yabai\""; \
-    launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+    yabai --restart-service
 
 # focus window
 alt - j : yabai -m window --focus south
@@ -94,16 +94,21 @@ shift + alt - k : yabai -m window --swap north
 shift + alt - h : yabai -m window --swap west
 shift + alt - l : yabai -m window --swap east
 
+alt - up : yabai -m window --stack north
+alt - right : yabai -m window --stack east
+alt - down : yabai -m window --stack south
+alt - left : yabai -m window --stack west
+
 # focus window that was previously focused
 alt - i : yabai -m window --focus recent
 
-# focus space next or prev 
+# focus space next or prev
 alt - n : yabai -m space --focus next
 alt - b : yabai -m space --focus prev
 
 # move managed window
 # shift + cmd - h : yabai -m window --warp east
-shift + cmd - j : yabai -m window --wrap south
+cmd + shift - j : yabai -m window --wrap south
 shift + cmd - k : yabai -m window --wrap north
 shift + cmd - h : yabai -m window --wrap west
 shift + cmd - l : yabai -m window --wrap east
@@ -155,13 +160,15 @@ alt - 8 : yabai -m space --focus 8
 alt - 9 : yabai -m space --focus 9
 alt - 0 : yabai -m space --focus 10
 
+shift + alt - d : yabai -m space --destroy
+
 # make floating window fill screen
 # shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1
 
 # make floating window fill left-half of screen
 # shift + alt - left   : yabai -m window --grid 1:2:0:0:1:1
 
-# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
+# create desktop, move window and follow focus - uses jq for parsing json
 shift + alt - n : yabai -m space --create && \
                   index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
                   yabai -m window --space "${index}" && \
@@ -207,8 +214,24 @@ alt - u : yabai -m window --toggle float;\
           #yabai -m window --toggle topmost;\
           #yabai -m window --toggle pip
 # alt - return : osascript -e 'tell application "iTerm2" to create window with default profile command ""' || open -a iTerm
-cmd - return : open -a iTerm
-shift + cmd - return : open -a "Brave Browser" 
+ctrl + cmd - j : open -a iTerm
+ctrl + cmd - k : open -a "Microsoft Edge"
+ctrl + cmd - l : open -a "Goland"
 
 # open Chrome.
 # cmd + shift - return : open -n -a "Google Chrome"
+
+shift + cmd - k : yabai -m window --focus stack.prev
+shift + cmd - j : yabai -m window --focos stack.next
+
+shift + alt - k : yabai -m query --spaces --space \
+  | jq -re ".index" \
+  | xargs -I{} yabai -m query --windows --space {} \
+  | jq -sre 'add | map(select(."is-minimized"==false)) | sort_by(.display, .frame.y, .frame.x, .id) | . as $array | length as $array_length | index(map(select(."has-focus"==true))) as $has_index | if $has_index > 0 then nth($has_index - 1).id else nth($array_length - 1).id end' \
+  | xargs -I{} yabai -m window --focus {}
+
+shift + alt - j : yabai -m query --spaces --space \
+  | jq -re ".index" \
+  | xargs -I{} yabai -m query --windows --space {} \
+  | jq -sre 'add | map(select(."is-minimized"==false)) | sort_by(.display, .frame.y, .frame.x, .id) | . as $array | length as $array_length | index(map(select(."has-focus"==true))) as $has_index | if $array_length - 1 > $has_index then nth($has_index + 1).id else nth(0).id end' \
+  | xargs -I{} yabai -m window --focus {}
