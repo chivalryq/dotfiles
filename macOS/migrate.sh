@@ -87,10 +87,15 @@ config_lazygit(){
         mkdir -p ~/Library/Application\ Support/lazygit
         ln -sF $DOTFILEDIR/config/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
 }
-config_omz
-config_neovim
-config_tmux
-config_lazygit
 
-brew_installs
-link_profiles
+all(){
+	config_omz
+	config_neovim
+	config_tmux
+	config_lazygit
+
+	brew_installs
+	link_profiles
+}
+
+all

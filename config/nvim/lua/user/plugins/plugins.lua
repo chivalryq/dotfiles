@@ -63,7 +63,6 @@ return packer.startup(function(use)
 		run = ":TSUpdate",
 	})
 	use("nvim-treesitter/nvim-treesitter-textobjects")
-	use("andymass/vim-matchup") -- Better match up like %
 
 	use({ "goolord/alpha-nvim" }) -- start page
 

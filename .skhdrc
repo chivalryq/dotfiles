@@ -94,10 +94,10 @@ shift + alt - k : yabai -m window --swap north
 shift + alt - h : yabai -m window --swap west
 shift + alt - l : yabai -m window --swap east
 
-alt - up : yabai -m window --stack north
-alt - right : yabai -m window --stack east
-alt - down : yabai -m window --stack south
-alt - left : yabai -m window --stack west
+#alt - up : yabai -m window --stack north
+#alt - right : yabai -m window --stack east
+#alt - down : yabai -m window --stack south
+#alt - left : yabai -m window --stack west
 
 # focus window that was previously focused
 alt - i : yabai -m window --focus recent
