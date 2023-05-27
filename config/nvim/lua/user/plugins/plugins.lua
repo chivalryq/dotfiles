@@ -187,6 +187,9 @@ return packer.startup(function(use)
 	use ('theHamsta/nvim-dap-virtual-text')
 	use 'mortepau/codicons.nvim'
 
+	-- Folding 
+	use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+
 	--always the latest
 	use("ryanoasis/vim-devicons")
 
