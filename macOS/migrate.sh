@@ -27,6 +27,7 @@ brew_installs(){
 	brew install fortune
 	brew install cowsay
 	brew install bat
+	brew install fd
 	brew install fzf
 	brew install ranger
 	brew install zsh-syntax-highlighting
