@@ -1,6 +1,6 @@
 -- Color scheme {{{
 vim.o.termguicolors = true
-vim.cmd.colorscheme("onedark")
+vim.cmd.colorscheme("catppuccin-macchiato")
 vim.cmd.syntax("on")
 vim.cmd([[
 	syntax on

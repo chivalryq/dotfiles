@@ -1,5 +1,3 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 ZSH_TMUX_AUTOSTART_ONCE=true
 
@@ -178,6 +176,5 @@ export GOBIN="$HOME/go/bin"
 export PATH="/usr/local/opt/node@14/bin:$HOME/go/bin:$PATH"
 
 source $HOME/.gvm/scripts/gvm
+source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"

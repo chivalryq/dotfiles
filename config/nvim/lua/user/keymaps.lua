@@ -207,3 +207,15 @@ map('n', '<leader>dus', ":lua require'dap'.repl.open()<cr>")
 map('n', '<leader>dl', ":lua require('dap-go').debug_last_test()<cr>")
 map('n', '<leader>dl', ":lua require('dap-go').debug_last_test()<cr>")
 
+
+keymap("n", "gpi", "<cmd>lua require('goto-preview').goto_preview_implementation()<cr>", opts)
+keymap("n", "gP", "<cmd>lua require('goto-preview').close_all_win()<cr>", opts)
+keymap("n", "R", "<cmd>lua require('goto-preview').goto_preview_references()<cr>", opts)
+
+vim.keymap.set('n', 'K', function()
+    local winid = require('ufo').peekFoldedLinesUnderCursor()
+    if not winid then
+		require('goto-preview').goto_preview_definition()
+    end
+end)
+

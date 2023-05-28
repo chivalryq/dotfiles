@@ -40,7 +40,8 @@ return packer.startup(function(use)
 	use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 	use("tpope/vim-fugitive")
 	use("nvim-lualine/lualine.nvim")
-	use("joshdick/onedark.vim")
+	-- use("joshdick/onedark.vim")
+	use { "catppuccin/nvim", as = "catppuccin" }
 	-- use("fatih/vim-go") --, { 'do': ':GoUpdateBinaries' }
 	--use {'neoclide/coc.nvim', branch = 'release'}
 	use("junegunn/fzf") --, { 'do': { -> fzf#install() } }
@@ -188,7 +189,8 @@ return packer.startup(function(use)
 	use 'mortepau/codicons.nvim'
 
 	-- Folding 
-	use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+	use {'kevinhwang91/nvim-ufo', requires = {'kevinhwang91/promise-async',"luukvbaal/statuscol.nvim"}}
+	use { "anuvyklack/fold-preview.nvim", requires = "anuvyklack/keymap-amend.nvim" }
 
 	--always the latest
 	use("ryanoasis/vim-devicons")
