@@ -11,7 +11,7 @@ npairs.setup({
 		javascript = { "string", "template_string" },
 		java = false,
 	},
-	disable_filetype = { "TelescopePrompt" },
+	disable_filetype = { "TelescopePrompt", "guihua", "guihua_rust", "clap_input" },
 	ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
 })
 

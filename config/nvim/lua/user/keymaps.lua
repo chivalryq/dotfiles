@@ -57,7 +57,6 @@ keymap("v", '<leader>"', 'i"<esc>gva"<esc>', opts)
 
 -- quick exit insert mode mode
 keymap("i", "jk", "<esc>", opts)
-keymap("i", "<esc>", "", opts)
 
 keymap("n", "<leader>n", ":<c-u>nohlsearch<cr><c-l>", opts)
 
@@ -106,7 +105,6 @@ keymap("n", "<leader>9", "9gt", opts)
 keymap("n", "<leader>0", ":tablast<cr>", opts)
 
 -- Save & quit
-keymap("n", "<c-q>", ":q<CR>", opts)
 keymap("n", "Q", ":q<CR>", opts)
 keymap("n", "S", ":w<CR>", opts)
 
@@ -181,21 +179,14 @@ keymap("n", "<leader>t", ":SymbolsOutline<cr>", opts)
 -- delete buffer without change the window structure
 keymap("n", "<C-D>", ":Bdelete<cr>", opts)
 
-keymap("n", "<leader>M", ":Mason<cr>",opts)
+keymap("n", "<leader>M", ":Mason<cr>", opts)
 
 -- Telescope
 local builtin = require("telescope.builtin")
 -- Another way to map
 local map = vim.keymap.set
-keymap('n','<leader>fb' ,":Telescope find_files<cr>",opts)
-keymap('n','<leader>fs' ,":Telescope treesitter<cr>",opts)
-keymap('n','<leader>fg' ,":Telescope live_grep<cr>",opts)
-keymap('n','<leader>r' ,":Telescope lsp_references theme=cursor<cr>",opts)
-keymap('n','<leader>fa' ,":Telescope autocommands<cr>",opts)
-keymap('n','<leader>fo' ,":Telescope vim_options<cr>",opts)
-keymap('n','<leader>ff' ,":Telescope current_buffer_fuzzy_find<cr>",opts)
 -- In case you want to ignore some file like node_modules
-map('n','<C-p>',builtin.git_files,opts)
+map('n', '<C-p>', builtin.git_files, opts)
 
 -- Debug
 map('n', '<leader>de', ":lua require('dap').continue()<cr>")
@@ -205,7 +196,6 @@ map('n', '<leader>o', ":lua require'dap'.step_over()<cr>")
 map('n', '<leader>i', ":lua require'dap'.step_into()<cr>")
 map('n', '<leader>dus', ":lua require'dap'.repl.open()<cr>")
 map('n', '<leader>dl', ":lua require('dap-go').debug_last_test()<cr>")
-map('n', '<leader>dl', ":lua require('dap-go').debug_last_test()<cr>")
 
 
 keymap("n", "gpi", "<cmd>lua require('goto-preview').goto_preview_implementation()<cr>", opts)
@@ -213,9 +203,8 @@ keymap("n", "gP", "<cmd>lua require('goto-preview').close_all_win()<cr>", opts)
 keymap("n", "R", "<cmd>lua require('goto-preview').goto_preview_references()<cr>", opts)
 
 vim.keymap.set('n', 'K', function()
-    local winid = require('ufo').peekFoldedLinesUnderCursor()
-    if not winid then
+	local winid = require('ufo').peekFoldedLinesUnderCursor()
+	if not winid then
 		require('goto-preview').goto_preview_definition()
-    end
+	end
 end)
-

@@ -4,3 +4,5 @@ for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/user/plug
         require("user.plugins." .. file:gsub("%.lua$", ""))
     end
 end
+
+require('user.plugins.telescope')

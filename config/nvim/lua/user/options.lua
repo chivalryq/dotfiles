@@ -1,7 +1,7 @@
 vim.opt.encoding = "UTF-8"
 vim.opt.expandtab = false
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
 vim.opt.updatetime = 100
 vim.opt.autowrite = true
 vim.opt.clipboard:append("unnamedplus")

@@ -7,3 +7,6 @@ end
 require("user.lsp.goto-preview")
 require("user.lsp.null-ls")
 require("user.lsp.handlers").setup()
+require("user.lsp.mason")
+require("user.lsp.keymap")
+require("user.lsp.navigator")

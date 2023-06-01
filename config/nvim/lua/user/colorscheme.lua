@@ -1,6 +1,15 @@
 -- Color scheme {{{
 vim.o.termguicolors = true
-vim.cmd.colorscheme("catppuccin-macchiato")
+
+local function set_colorscheme(scheme)
+	local ok, _ = pcall(vim.cmd, 'colorscheme ' .. scheme)
+	if not ok then
+		print('Colorscheme not found: ' .. scheme)
+	end
+end
+
+-- Set the colorscheme
+set_colorscheme('catppuccin-macchiato')
 vim.cmd.syntax("on")
 vim.cmd([[
 	syntax on

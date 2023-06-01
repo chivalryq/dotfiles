@@ -37,7 +37,12 @@ return packer.startup(function(use)
 	use("godlygeek/tabular")
 
 	use("iamcco/mathjax-support-for-mkdp")
-	use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+		ft = { "markdown" },
+	})
 	use("tpope/vim-fugitive")
 	use("nvim-lualine/lualine.nvim")
 	-- use("joshdick/onedark.vim")
@@ -49,7 +54,7 @@ return packer.startup(function(use)
 	use("preservim/nerdcommenter")
 	use("AndrewRadev/splitjoin.vim")
 	use("AndrewRadev/switch.vim")
-	use("ctrlpvim/ctrlp.vim") -- Now only for GoDecls and GoDeclsDir
+	use("ctrlpvim/ctrlp.vim")   -- Now only for GoDecls and GoDeclsDir
 	use("universal-ctags/ctags")
 	use("voldikss/vim-floaterm") -- Float terminal in nvim
 	-- Find files/grep/
@@ -57,6 +62,9 @@ return packer.startup(function(use)
 		"nvim-telescope/telescope.nvim",
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
+	use { 'nvim-telescope/telescope-fzf-native.nvim', run =
+	'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+	use { "nvim-telescope/telescope-dap.nvim" }
 
 	-- highlight, indent.. based on syntax
 	use({
@@ -79,10 +87,9 @@ return packer.startup(function(use)
 	use("hrsh7th/nvim-cmp") -- Autocompletion plugin
 
 	-- LSP
-	use("neovim/nvim-lspconfig") -- Collection of configurations for built-in LSP client
-	use("onsails/lspkind-nvim") -- Icons for completion list
+	use("neovim/nvim-lspconfig")          -- Collection of configurations for built-in LSP client
+	use("onsails/lspkind-nvim")           -- Icons for completion list
 	use("jose-elias-alvarez/null-ls.nvim") -- formmatter and linter
-	use("tami5/lspsaga.nvim") -- for more lsp feature
 	-- use("williamboman/nvim-lsp-installer") -- Simple to use language server
 	use {
 		"williamboman/mason.nvim",
@@ -93,11 +100,25 @@ return packer.startup(function(use)
 	}
 
 	use("rmagatti/goto-preview") -- Better definition/implement preview
-	use( "ray-x/lsp_signature.nvim" )
+	use("ray-x/lsp_signature.nvim")
+	use({
+		'ray-x/navigator.lua',
+		requires = {
+			{ 'ray-x/guihua.lua',     run = 'cd lua/fzy && make' },
+			{ 'neovim/nvim-lspconfig' },
+		},
+	})
 	use("simrat39/symbols-outline.nvim") -- Show syntax outline of file
-	use{
+	use {
 		"zbirenbaum/copilot.lua",
 	}
+	use {
+		"smjonas/inc-rename.nvim",
+		config = function()
+			require("inc_rename").setup()
+		end,
+	}
+
 
 	use({
 		"kyazdani42/nvim-tree.lua",
@@ -180,16 +201,16 @@ return packer.startup(function(use)
 	}
 
 	-- Debug
-	use ('mfussenegger/nvim-dap')
-	use ('leoluz/nvim-dap-go')
-	use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+	use('mfussenegger/nvim-dap')
+	use('leoluz/nvim-dap-go')
+	use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
 	-- recommended by nvim-dap-ui to integrate
-	use {"folke/neodev.nvim"}
-	use ('theHamsta/nvim-dap-virtual-text')
+	use { "folke/neodev.nvim" }
+	use('theHamsta/nvim-dap-virtual-text')
 	use 'mortepau/codicons.nvim'
 
-	-- Folding 
-	use {'kevinhwang91/nvim-ufo', requires = {'kevinhwang91/promise-async',"luukvbaal/statuscol.nvim"}}
+	-- Folding
+	use { 'kevinhwang91/nvim-ufo', requires = { 'kevinhwang91/promise-async', "luukvbaal/statuscol.nvim" } }
 	use { "anuvyklack/fold-preview.nvim", requires = "anuvyklack/keymap-amend.nvim" }
 
 	--always the latest
