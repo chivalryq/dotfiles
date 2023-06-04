@@ -48,6 +48,7 @@ brew_installs(){
 	brew services start skhd
 	# For neovim telescopt
 	brew install ripgrep
+	brew install cmake
 	$(brew --prefix)/opt/fzf/install
 }
 
