@@ -8,8 +8,14 @@
 -- For configuration examples see: https://github.com/goolord/alpha-nvim/discussions/16
 
 
-local alpha = require 'alpha'
-local dashboard = require 'alpha.themes.dashboard'
+local ok,alpha = pcall(require, 'alpha')
+if not ok then
+	return
+end
+local ok, dashboard = pcall(require, 'alpha.themes.dashboard')
+if not ok then
+	return
+end
 
 -- Footer
 local function footer()
