@@ -49,6 +49,7 @@ brew_installs(){
 	# For neovim telescopt
 	brew install ripgrep
 	brew install cmake
+	brew install kubectl
 	$(brew --prefix)/opt/fzf/install
 }
 
@@ -65,8 +66,14 @@ config_omz(){
         pushd $REPODIR/autojump
         ./install.py
         popd
-        #Powerlevel10k
-        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+        echo "Configuring Powerlevel10k"
+        rm -rf $HOME/powerlevel10k
+        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/powerlevel10k
+
+				echo "Configuring Catppuccin for zsh-syntax-highlighting"
+				mkdir -p ~/.zsh/
+				git clone https://github.com/catppuccin/zsh-syntax-highlighting.git
+				cp -v zsh-syntax-highlighting/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh ~/.zsh/
 }
 
 #neovim
@@ -90,14 +97,28 @@ config_lazygit(){
         ln -sF $DOTFILEDIR/config/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
 }
 
+open_links(){
+        # Karabiner-Elements
+        open https://karabiner-elements.pqrs.org/	
+}
+
+config_gvm(){
+	brew install gvm
+	bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+}
+
+
 all(){
+	brew_installs
+
 	config_omz
 	config_neovim
 	config_tmux
 	config_lazygit
+	config_gvm
 
-	brew_installs
 	link_profiles
+  open_links
 }
 
 all

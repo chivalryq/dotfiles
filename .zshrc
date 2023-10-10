@@ -110,12 +110,13 @@ setalias(){
         alias kd="k describe"
         alias kc="k config"
         alias kde="k delete"
-	    alias kga="k get app"
-	    alias kgaA="k get app -A"
+				alias kga="k get app"
+				alias kgaA="k get app -A"
 
-		alias nok="export KUBECONFIG="
-		alias lk="export KUBECONFIG=$(velad kubeconfig --host)"
-		alias ek='echo $KUBECONFIG'
+				alias nok="export KUBECONFIG="
+				#alias lk="export KUBECONFIG=$(velad kubeconfig --host)"
+				alias ek='echo $KUBECONFIG'
+				alias kva="kubectl-view-allocations"
 
 
         alias lg='lazygit'
@@ -150,11 +151,12 @@ setalias(){
         alias vim='nvim'
 		alias nv='nvim'
 		alias python=python3
+		alias s=ssh
 }
 
 setgvm(){
-	source ${HOME}/.gvm/scripts/gvm
-	gvm use 1.19 > /dev/null
+  [[ -s "/Users/qiaozp/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+	gvm use go1.19 > /dev/null
 }
 setalias
 setproxy
@@ -175,6 +177,6 @@ export GOPATH="$HOME/go"
 export GOBIN="$HOME/go/bin"
 export PATH="/usr/local/opt/node@14/bin:$HOME/go/bin:$PATH"
 
-source $HOME/.gvm/scripts/gvm
 source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
+[[ -s "/Users/qiaozp/.gvm/scripts/gvm" ]] && source "/Users/qiaozp/.gvm/scripts/gvm"
