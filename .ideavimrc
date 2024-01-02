@@ -77,6 +77,8 @@ nnoremap <leader>fq :action ProblemsView.QuickFixes<CR>
 map <leader>cc <Action>(CommentByLineComment)
 map <leader>cb <Action>(CommentByBlockComment)
 
+map <C-t> <Action>(ActivateTerminalToolWindow)
+
 
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -117,6 +119,7 @@ map ge <Action>(GotoNextError)
 map gE <Action>(GotoPreviousError)
 map gn <Action>(VcsShowNextChangeMarker)
 map gN <Action>(VcsShowPrevChangeMarker)
+map gR <Action>(Vcs.RollbackChangedLines)
 map gs <Action>(SelectInProjectView)
 map ga <Action>(Annotate)
 map gr <Action>(editRunConfigurations)

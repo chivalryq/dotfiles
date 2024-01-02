@@ -31,10 +31,10 @@ yabai -m config mouse_drop_action            stack
 yabai -m config window_animation_duration    0.1
 yabai -m config window_animation_frame_rate  60
 
- general space settings
+# general space settings
 yabai -m config layout                       bsp
-yabai -m config top_padding                  10
-yabai -m config bottom_padding               10
+yabai -m config top_padding                  06
+yabai -m config bottom_padding               06
 yabai -m config left_padding                 06
 yabai -m config right_padding                06
 yabai -m config window_gap                   03
@@ -47,7 +47,7 @@ yabai -m rule --add label=iTerm app="^iTerm2$" sticky=on
 # yabai -m rule --add label=Goland app="^GoLand$" space=3
 
 # 临时性的App 也就是manage=off不受到yabai平铺式的限制，之前怎么弹出来就怎么弹出来
-otherApp='^(阿里钉|Stats|IINA|访达|Calendar|日历|System Preferences|系统设置|1Password 7|Mail|微信|WeChatc|QQ|Android Studio|Visual Studio Code|Gitify|Finder)$'
+otherApp='^(1Password|Stats|IINA|访达|Calendar|日历|System Preferences|系统设置|1Password 7|Mail|微信|WeChatc|QQ|Android Studio|Visual Studio Code|Gitify|Finder|JetBrains Toolbox)$'
 yabai -m rule --add app="${otherApp}" manage=off
 
 # refresh my Übersicht bar when the space changes

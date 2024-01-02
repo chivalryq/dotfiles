@@ -8,7 +8,7 @@ export ZSH="/Users/qiaozp/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="eastwood"
+ZSH_THEME="eastwood-qzp"
 
 
 # Set list of themes to pick from when loading at random
@@ -143,12 +143,19 @@ setalias(){
         alias cat='bat'
 
         #kubevela tools
-	if [ -f $HOME'/repo/vela-script/alias.sh' ]; then
-		source $HOME'/repo/vela-script/alias.sh'
-	fi
+				if [ -f $HOME'/repo/vela-script/alias.sh' ]; then
+					source $HOME'/repo/vela-script/alias.sh'
+				fi
 
-        #use nvim as vim
+        # edit file short cut
         alias vim='nvim'
+				alias vs='vim ~/.ssh/config'
+				alias vk='vim ~/.kube'
+
+				alias 9="k9s"
+				alias kk="k9s"
+
+
 		alias nv='nvim'
 		alias python=python3
 		alias s=ssh
@@ -156,7 +163,7 @@ setalias(){
 
 setgvm(){
   [[ -s "/Users/qiaozp/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
-	gvm use go1.19 > /dev/null
+	gvm use go1.21 > /dev/null
 }
 setalias
 setproxy
@@ -177,6 +184,8 @@ export GOPATH="$HOME/go"
 export GOBIN="$HOME/go/bin"
 export PATH="/usr/local/opt/node@14/bin:$HOME/go/bin:$PATH"
 
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
+source ~/repo/dotfiles/kubeconfig-key-binding.zsh
 
 [[ -s "/Users/qiaozp/.gvm/scripts/gvm" ]] && source "/Users/qiaozp/.gvm/scripts/gvm"
