@@ -184,7 +184,7 @@ keymap("n", "<leader>M", ":Mason<cr>", opts)
 -- Another way to map
 local map = vim.keymap.set
 -- Telescope
-local status_ok, builtin = pcall(require,"telescope.builtin")
+local status_ok, builtin = pcall(require, "telescope.builtin")
 if status_ok then
 	-- In case you want to ignore some file like node_modules
 	map('n', '<C-p>', builtin.git_files, opts)

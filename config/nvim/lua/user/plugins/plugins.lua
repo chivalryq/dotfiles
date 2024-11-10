@@ -36,6 +36,8 @@ return packer.startup(function(use)
 	use("junegunn/seoul256.vim")
 	use("godlygeek/tabular")
 
+	use("nvim-neotest/nvim-nio")
+
 	use("iamcco/mathjax-support-for-mkdp")
 	use({
 		"iamcco/markdown-preview.nvim",
@@ -214,7 +216,7 @@ return packer.startup(function(use)
 	use { "anuvyklack/fold-preview.nvim", requires = "anuvyklack/keymap-amend.nvim" }
 
 	--always the latest
-	use("ryanoasis/vim-devicons")
+	--use("ryanoasis/vim-devicons")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
