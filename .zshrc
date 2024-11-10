@@ -102,6 +102,7 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export PATH=$PATH:/Users/qiaozp/go/bin
+export PATH=/usr/local/bin:$PATH
 
 setalias(){
         #k8s
@@ -150,10 +151,12 @@ setalias(){
         # edit file short cut
         alias vim='nvim'
 				alias vs='vim ~/.ssh/config'
+				alias vh="vim /etc/hosts"
 				alias vk='vim ~/.kube'
 
 				alias 9="k9s"
 				alias kk="k9s"
+				alias kva="kubectl view-allocations"
 
 
 		alias nv='nvim'
@@ -187,5 +190,6 @@ export PATH="/usr/local/opt/node@14/bin:$HOME/go/bin:$PATH"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 source ~/repo/dotfiles/kubeconfig-key-binding.zsh
+source ~/repo/dotfiles/k9s-key-binding.zsh
 
 [[ -s "/Users/qiaozp/.gvm/scripts/gvm" ]] && source "/Users/qiaozp/.gvm/scripts/gvm"
