@@ -15,6 +15,6 @@ kubeconfig-widget() {
   return $ret
 }
 zle     -N   kubeconfig-widget
-bindkey '^I' kubeconfig-widget
+bindkey '^O' kubeconfig-widget
 
 fi
