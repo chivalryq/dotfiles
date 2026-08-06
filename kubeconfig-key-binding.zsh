@@ -1,20 +1,27 @@
-# Key bindings
-# ------------
-# If interactive mode, then execute.
 if [[ $- == *i* ]]; then
+  # fleet-context-widget switches kubectl-compatible tools to a Fleet context.
+  fleet-context-widget() {
+    local config="${FLEETCTL_HOME:-$HOME/.config/fleetctl}/config"
+    local selected ret
 
-kubeconfig-widget() {
-  local selected num
-  setopt localoptions noglobsubst noposixbuiltins pipefail 2> /dev/null
-  selected=( $(ls ~/.kube/*.kubeconfig | xargs basename | cut -d . -f 1 | fzf) )
-  local ret=$?
-  if [ -n "$selected" ]; then
-		export KUBECONFIG=~/.kube/$selected.kubeconfig
-  fi
-  zle reset-prompt
-  return $ret
-}
-zle     -N   kubeconfig-widget
-bindkey '^O' kubeconfig-widget
+    if [[ ! -r "$config" ]]; then
+      zle -M "fleet kubeconfig not found: $config"
+      return 1
+    fi
 
+    setopt localoptions pipefail
+    selected=$(KUBECONFIG="$config" kubectl config get-contexts -o name | fzf --prompt='fleet context> ')
+    ret=$?
+    if (( ret == 0 )) && [[ -n "$selected" ]]; then
+      KUBECONFIG="$config" kubectl config use-context "$selected" >/dev/null
+      ret=$?
+      (( ret == 0 )) && export KUBECONFIG="$config"
+    fi
+
+    zle reset-prompt
+    return $ret
+  }
+
+  zle -N fleet-context-widget
+  bindkey '^O' fleet-context-widget
 fi
